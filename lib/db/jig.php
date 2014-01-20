@@ -1,7 +1,7 @@
 <?php
 
 /*
-	Copyright (c) 2009-2014 F3::Factory/Bong Cosca, All rights reserved.
+	Copyright (c) 2009-2012 F3::Factory/Bong Cosca, All rights reserved.
 
 	This file is part of the Fat-Free Framework (http://fatfree.sf.net).
 
@@ -25,8 +25,6 @@ class Jig {
 	//@}
 
 	protected
-		//! UUID
-		$uuid,
 		//! Storage location
 		$dir,
 		//! Current storage format
@@ -35,9 +33,9 @@ class Jig {
 		$log;
 
 	/**
-	*	Read data from file
-	*	@return array
-	*	@param $file string
+		Read data from file
+		@return array
+		@param $file string
 	**/
 	function read($file) {
 		$fw=\Base::instance();
@@ -56,10 +54,10 @@ class Jig {
 	}
 
 	/**
-	*	Write data to file
-	*	@return int
-	*	@param $file string
-	*	@param $data array
+		Write data to file
+		@return int
+		@param $file string
+		@param $data array
 	**/
 	function write($file,array $data=NULL) {
 		$fw=\Base::instance();
@@ -71,37 +69,22 @@ class Jig {
 				$out=$fw->serialize($data);
 				break;
 		}
-		return $fw->write($this->dir.$file,$out);
+		$out=$fw->write($this->dir.$file,$out);
+		return $out;
 	}
 
 	/**
-	*	Return directory
-	*	@return string
-	**/
-	function dir() {
-		return $this->dir;
-	}
-
-	/**
-	*	Return UUID
-	*	@return string
-	**/
-	function uuid() {
-		return $this->uuid;
-	}
-
-	/**
-	*	Return SQL profiler results
-	*	@return string
+		Return SQL profiler results
+		@return string
 	**/
 	function log() {
 		return $this->log;
 	}
 
 	/**
-	*	Jot down log entry
-	*	@return NULL
-	*	@param $frame string
+		Jot down log entry
+		@return NULL
+		@param $frame string
 	**/
 	function jot($frame) {
 		if ($frame)
@@ -109,24 +92,23 @@ class Jig {
 	}
 
 	/**
-	*	Clean storage
-	*	@return NULL
+		Clean storage
+		@return NULL
 	**/
 	function drop() {
-		if ($glob=@glob($this->dir.'/*',GLOB_NOSORT))
-			foreach ($glob as $file)
-				@unlink($file);
+		foreach (glob($this->dir.'/*',GLOB_NOSORT) as $file)
+			@unlink($file);
 	}
 
 	/**
-	*	Instantiate class
-	*	@param $dir string
-	*	@param $format int
+		Instantiate class
+		@param $dir string
+		@param $format int
 	**/
 	function __construct($dir,$format=self::FORMAT_JSON) {
 		if (!is_dir($dir))
 			mkdir($dir,\Base::MODE,TRUE);
-		$this->uuid=\Base::instance()->hash($this->dir=$dir);
+		$this->dir=$dir;
 		$this->format=$format;
 	}
 

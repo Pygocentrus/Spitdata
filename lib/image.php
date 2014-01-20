@@ -1,7 +1,7 @@
 <?php
 
 /*
-	Copyright (c) 2009-2014 F3::Factory/Bong Cosca, All rights reserved.
+	Copyright (c) 2009-2012 F3::Factory/Bong Cosca, All rights reserved.
 
 	This file is part of the Fat-Free Framework (http://fatfree.sf.net).
 
@@ -18,9 +18,7 @@ class Image {
 
 	//@{ Messages
 	const
-		E_Color='Invalid color specified: %s',
-		E_Font='CAPTCHA font not found',
-		E_Length='Invalid CAPTCHA length: %s';
+		E_Color='Invalid color specified: %s';
 	//@}
 
 	//@{ Positional cues
@@ -44,9 +42,9 @@ class Image {
 		$count=0;
 
 	/**
-	*	Convert RGB hex triad to array
-	*	@return array|FALSE
-	*	@param $color int
+		Convert RGB hex triad to array
+		@return array|FALSE
+		@param $color int
 	**/
 	function rgb($color) {
 		$hex=str_pad($hex=dechex($color),$color<4096?3:6,'0',STR_PAD_LEFT);
@@ -61,8 +59,8 @@ class Image {
 	}
 
 	/**
-	*	Invert image
-	*	@return object
+		Invert image
+		@return object
 	**/
 	function invert() {
 		imagefilter($this->data,IMG_FILTER_NEGATE);
@@ -70,9 +68,9 @@ class Image {
 	}
 
 	/**
-	*	Adjust brightness (range:-255 to 255)
-	*	@return object
-	*	@param $level int
+		Adjust brightness (range:-255 to 255)
+		@return object
+		@param $level int
 	**/
 	function brightness($level) {
 		imagefilter($this->data,IMG_FILTER_BRIGHTNESS,$level);
@@ -80,9 +78,9 @@ class Image {
 	}
 
 	/**
-	*	Adjust contrast (range:-100 to 100)
-	*	@return object
-	*	@param $level int
+		Adjust contrast (range:-100 to 100)
+		@return object
+		@param $level int
 	**/
 	function contrast($level) {
 		imagefilter($this->data,IMG_FILTER_CONTRAST,$level);
@@ -90,8 +88,8 @@ class Image {
 	}
 
 	/**
-	*	Convert to grayscale
-	*	@return object
+		Convert to grayscale
+		@return object
 	**/
 	function grayscale() {
 		imagefilter($this->data,IMG_FILTER_GRAYSCALE);
@@ -99,9 +97,9 @@ class Image {
 	}
 
 	/**
-	*	Adjust smoothness
-	*	@return object
-	*	@param $level int
+		Adjust smoothness
+		@return object
+		@param $level int
 	**/
 	function smooth($level) {
 		imagefilter($this->data,IMG_FILTER_SMOOTH,$level);
@@ -109,8 +107,8 @@ class Image {
 	}
 
 	/**
-	*	Emboss the image
-	*	@return object
+		Emboss the image
+		@return object
 	**/
 	function emboss() {
 		imagefilter($this->data,IMG_FILTER_EMBOSS);
@@ -118,8 +116,8 @@ class Image {
 	}
 
 	/**
-	*	Apply sepia effect
-	*	@return object
+		Apply sepia effect
+		@return object
 	**/
 	function sepia() {
 		imagefilter($this->data,IMG_FILTER_GRAYSCALE);
@@ -128,9 +126,9 @@ class Image {
 	}
 
 	/**
-	*	Pixelate the image
-	*	@return object
-	*	@param $size int
+		Pixelate the image
+		@return object
+		@param $size int
 	**/
 	function pixelate($size) {
 		imagefilter($this->data,IMG_FILTER_PIXELATE,$size,TRUE);
@@ -138,9 +136,9 @@ class Image {
 	}
 
 	/**
-	*	Blur the image using Gaussian filter
-	*	@return object
-	*	@param $selective bool
+		Blur the image using Gaussian filter
+		@return object
+		@param $selective bool
 	**/
 	function blur($selective=FALSE) {
 		imagefilter($this->data,
@@ -149,8 +147,8 @@ class Image {
 	}
 
 	/**
-	*	Apply sketch effect
-	*	@return object
+		Apply sketch effect
+		@return object
 	**/
 	function sketch() {
 		imagefilter($this->data,IMG_FILTER_MEAN_REMOVAL);
@@ -158,8 +156,8 @@ class Image {
 	}
 
 	/**
-	*	Flip on horizontal axis
-	*	@return object
+		Flip on horizontal axis
+		@return object
 	**/
 	function hflip() {
 		$tmp=imagecreatetruecolor(
@@ -174,8 +172,8 @@ class Image {
 	}
 
 	/**
-	*	Flip on vertical axis
-	*	@return object
+		Flip on vertical axis
+		@return object
 	**/
 	function vflip() {
 		$tmp=imagecreatetruecolor(
@@ -190,34 +188,14 @@ class Image {
 	}
 
 	/**
-	*	Crop the image
-	*	@return object
-	*	@param $x1 int
-	*	@param $y1 int
-	*	@param $x2 int
-	*	@param $y2 int
+		Resize image (Maintain aspect ratio); Crop relative to center
+		if flag is enabled
+		@return object
+		@param $width int
+		@param $height int
+		@param $crop bool
 	**/
-	function crop($x1,$y1,$x2,$y2) {
-		$tmp=imagecreatetruecolor($width=$x2-$x1+1,$height=$y2-$y1+1);
-		imagesavealpha($tmp,TRUE);
-		imagefill($tmp,0,0,IMG_COLOR_TRANSPARENT);
-		imagecopyresampled($tmp,$this->data,
-			0,0,$x1,$y1,$width,$height,$width,$height);
-		imagedestroy($this->data);
-		$this->data=$tmp;
-		return $this->save();
-	}
-
-	/**
-	*	Resize image (Maintain aspect ratio); Crop relative to center
-	*	if flag is enabled; Enlargement allowed if flag is enabled
-	*	@return object
-	*	@param $width int
-	*	@param $height int
-	*	@param $crop bool
-	*	@param $enlarge bool
-	**/
-	function resize($width,$height,$crop=TRUE,$enlarge=TRUE) {
+	function resize($width,$height,$crop=TRUE) {
 		// Adjust dimensions; retain aspect ratio
 		$ratio=($origw=imagesx($this->data))/($origh=imagesy($this->data));
 		if (!$crop)
@@ -225,10 +203,6 @@ class Image {
 				$height=$width/$ratio;
 			else
 				$width=$height*$ratio;
-		if (!$enlarge) {
-			$width=min($origw,$width);
-			$height=min($origh,$height);
-		}
 		// Create blank image
 		$tmp=imagecreatetruecolor($width,$height);
 		imagesavealpha($tmp,TRUE);
@@ -255,22 +229,21 @@ class Image {
 	}
 
 	/**
-	*	Rotate image
-	*	@return object
-	*	@param $angle int
+		Rotate image
+		@return object
+		@param $angle int
 	**/
 	function rotate($angle) {
-		$this->data=imagerotate($this->data,$angle,
-			imagecolorallocatealpha($this->data,0,0,0,127));
+		$this->data=imagerotate($this->data,$angle,IMG_COLOR_TRANSPARENT);
 		imagesavealpha($this->data,TRUE);
 		return $this->save();
 	}
 
 	/**
-	*	Apply an image overlay
-	*	@return object
-	*	@param $img object
-	*	@param $align int
+		Apply an image overlay
+		@return object
+		@param $img object
+		@param $align int
 	**/
 	function overlay(Image $img,$align=NULL) {
 		if (is_null($align))
@@ -302,11 +275,11 @@ class Image {
 	}
 
 	/**
-	*	Generate identicon
-	*	@return object
-	*	@param $str string
-	*	@param $size int
-	*	@param $blocks int
+		Generate identicon
+			@return object
+			@param $str string
+			@param $size int
+			@param $blocks int
 	**/
 	function identicon($str,$size=64,$blocks=4) {
 		$sprites=array(
@@ -327,11 +300,11 @@ class Image {
 			array(0,.5,.5,.5,.5,0,1,0,.5,.5,1,.5,.5,1,.5,.5,0,1),
 			array(0,0,1,0,.5,.5,.5,0,0,.5,1,.5,.5,1,.5,.5,0,1)
 		);
-		$hash=sha1($str);
 		$this->data=imagecreatetruecolor($size,$size);
-		list($r,$g,$b)=$this->rgb(hexdec(substr($hash,-3)));
+		list($r,$g,$b)=$this->rgb(mt_rand(0x333,0xCCC));
 		$fg=imagecolorallocate($this->data,$r,$g,$b);
 		imagefill($this->data,0,0,IMG_COLOR_TRANSPARENT);
+		$hash=sha1($str);
 		$ctr=count($sprites);
 		$dim=$blocks*floor($size/$blocks)*2/$blocks;
 		for ($j=0,$y=ceil($blocks/2);$j<$y;$j++)
@@ -346,12 +319,12 @@ class Image {
 				}
 				$sprite=imagerotate($sprite,
 					90*(hexdec($hash[($j*$blocks+$i)*2+1])%4),
-					imagecolorallocatealpha($sprite,0,0,0,127));
+					IMG_COLOR_TRANSPARENT);
 				for ($k=0;$k<4;$k++) {
 					imagecopyresampled($this->data,$sprite,
 						$i*$dim/2,$j*$dim/2,0,0,$dim/2,$dim/2,$dim,$dim);
 					$this->data=imagerotate($this->data,90,
-						imagecolorallocatealpha($this->data,0,0,0,127));
+						IMG_COLOR_TRANSPARENT);
 				}
 				imagedestroy($sprite);
 			}
@@ -360,28 +333,18 @@ class Image {
 	}
 
 	/**
-	*	Generate CAPTCHA image
-	*	@return object|FALSE
-	*	@param $font string
-	*	@param $size int
-	*	@param $len int
-	*	@param $key string
-	*	@param $path string
-	*	@param $fg int
-	*	@param $bg int
+		Generate CAPTCHA image
+		@return object|FALSE
+		@param $font string
+		@param $size int
+		@param $len int
+		@param $key string
 	**/
-	function captcha($font,$size=24,$len=5,
-		$key=NULL,$path='',$fg=0xFFFFFF,$bg=0x000000) {
-		if ((!$ssl=extension_loaded('openssl')) && ($len<4 || $len>13)) {
-			user_error(sprintf(self::E_Length,$len));
-			return FALSE;
-		}
+	function captcha($font,$size=24,$len=5,$key=NULL) {
 		$fw=Base::instance();
-		foreach ($fw->split($path?:$fw->get('UI').';./') as $dir)
+		foreach ($fw->split($fw->get('UI')) as $dir)
 			if (is_file($path=$dir.$font)) {
-				$seed=strtoupper(substr(
-					$ssl?bin2hex(openssl_random_pseudo_bytes($len)):uniqid(),
-					-$len));
+				$seed=strtoupper(substr(uniqid(),-$len));
 				$block=$size*3;
 				$tmp=array();
 				for ($i=0,$width=0,$height=0;$i<$len;$i++) {
@@ -390,12 +353,12 @@ class Image {
 					$w=$box[2]-$box[0];
 					$h=$box[1]-$box[5];
 					$char=imagecreatetruecolor($block,$block);
-					imagefill($char,0,0,$bg);
+					imagefill($char,0,0,0);
 					imagettftext($char,$size*2,0,
 						($block-$w)/2,$block-($block-$h)/2,
-						$fg,$path,$seed[$i]);
-					$char=imagerotate($char,mt_rand(-30,30),
-						imagecolorallocatealpha($char,0,0,0,127));
+						0xFFFFFF,$path,$seed[$i]);
+					$char=imagerotate($char,
+						mt_rand(-30,30),IMG_COLOR_TRANSPARENT);
 					// Reduce to normal size
 					$tmp[$i]=imagecreatetruecolor(
 						($w=imagesx($char))/2,($h=imagesy($char))/2);
@@ -418,29 +381,28 @@ class Image {
 					$fw->set($key,$seed);
 				return $this->save();
 			}
-		user_error(self::E_Font);
 		return FALSE;
 	}
 
 	/**
-	*	Return image width
-	*	@return int
+		Return image width
+		@return int
 	**/
 	function width() {
 		return imagesx($this->data);
 	}
 
 	/**
-	*	Return image height
-	*	@return int
+		Return image height
+		@return int
 	**/
 	function height() {
 		return imagesy($this->data);
 	}
 
 	/**
-	*	Send image to HTTP client
-	*	@return NULL
+		Send image to HTTP client
+		@return NULL
 	**/
 	function render() {
 		$args=func_get_args();
@@ -449,26 +411,24 @@ class Image {
 			header('Content-Type: image/'.$format);
 			header('X-Powered-By: '.Base::instance()->get('PACKAGE'));
 		}
-		call_user_func_array('image'.$format,
-			array_merge(array($this->data),$args));
+		call_user_func_array('image'.$format,array_merge(array($this->data),$args));
 	}
 
 	/**
-	*	Return image as a string
-	*	@return string
+		Return image as a string
+		@return string
 	**/
 	function dump() {
 		$args=func_get_args();
 		$format=$args?array_shift($args):'png';
 		ob_start();
-		call_user_func_array('image'.$format,
-			array_merge(array($this->data),$args));
+		call_user_func_array('image'.$format,array_merge(array($this->data),$args));
 		return ob_get_clean();
 	}
 
 	/**
-	*	Save current state
-	*	@return object
+		Save current state
+		@return object
 	**/
 	function save() {
 		$fw=Base::instance();
@@ -485,9 +445,9 @@ class Image {
 	}
 
 	/**
-	*	Revert to specified state
-	*	@return object
-	*	@param $state int
+		Revert to specified state
+		@return object
+		@param $state int
 	**/
 	function restore($state=1) {
 		$fw=Base::instance();
@@ -508,8 +468,8 @@ class Image {
 	}
 
 	/**
-	*	Undo most recently applied filter
-	*	@return object
+		Undo most recently applied filter
+		@return object
 	**/
 	function undo() {
 		if ($this->flag) {
@@ -521,38 +481,28 @@ class Image {
 	}
 
 	/**
-	*	Load string
-	*	@return object
-	*	@param $str string
+		Instantiate image
+		@param $file string
+		@param $flag bool
 	**/
-	function load($str) {
-		$this->data=imagecreatefromstring($str);
-		imagesavealpha($this->data,TRUE);
-		$this->save();
-		return $this;
-	}
-
-	/**
-	*	Instantiate image
-	*	@param $file string
-	*	@param $flag bool
-	*	@param $path string
-	**/
-	function __construct($file=NULL,$flag=FALSE,$path='') {
+	function __construct($file=NULL,$flag=FALSE) {
 		$this->flag=$flag;
 		if ($file) {
 			$fw=Base::instance();
 			// Create image from file
 			$this->file=$file;
-			foreach ($fw->split($path?:$fw->get('UI').';./') as $dir)
-				if (is_file($dir.$file))
-					return $this->load($fw->read($dir.$file));
+			foreach ($fw->split($fw->get('UI')) as $dir)
+				if (is_file($dir.$file)) {
+					$this->data=imagecreatefromstring($fw->read($dir.$file));
+					imagesavealpha($this->data,TRUE);
+					$this->save();
+				}
 		}
 	}
 
 	/**
-	*	Wrap-up
-	*	@return NULL
+		Wrap-up
+		@return NULL
 	**/
 	function __destruct() {
 		if (is_resource($this->data)) {
@@ -561,10 +511,9 @@ class Image {
 			$path=$fw->get('TEMP').
 				$fw->hash($fw->get('ROOT').$fw->get('BASE')).'.'.
 				$fw->hash($this->file);
-			if ($glob=@glob($path.'*.png',GLOB_NOSORT))
-				foreach ($glob as $match)
-					if (preg_match('/-(\d+)\.png/',$match))
-						@unlink($match);
+			foreach (glob($path.'*.png',GLOB_NOSORT) as $match)
+				if (preg_match('/-(\d+)\.png/',$match))
+					@unlink($match);
 		}
 	}
 

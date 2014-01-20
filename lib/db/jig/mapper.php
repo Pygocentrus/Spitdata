@@ -1,7 +1,7 @@
 <?php
 
 /*
-	Copyright (c) 2009-2014 F3::Factory/Bong Cosca, All rights reserved.
+	Copyright (c) 2009-2012 F3::Factory/Bong Cosca, All rights reserved.
 
 	This file is part of the Fat-Free Framework (http://fatfree.sf.net).
 
@@ -29,28 +29,28 @@ class Mapper extends \DB\Cursor {
 		$document=array();
 
 	/**
-	*	Return TRUE if field is defined
-	*	@return bool
-	*	@param $key string
+		Return TRUE if field is defined
+		@return bool
+		@param $key string
 	**/
 	function exists($key) {
 		return array_key_exists($key,$this->document);
 	}
 
 	/**
-	*	Assign value to field
-	*	@return scalar|FALSE
-	*	@param $key string
-	*	@param $val scalar
+		Assign value to field
+		@return scalar|FALSE
+		@param $key string
+		@param $val scalar
 	**/
 	function set($key,$val) {
 		return ($key=='_id')?FALSE:($this->document[$key]=$val);
 	}
 
 	/**
-	*	Retrieve value of field
-	*	@return scalar|FALSE
-	*	@param $key string
+		Retrieve value of field
+		@return scalar|FALSE
+		@param $key string
 	**/
 	function get($key) {
 		if ($key=='_id')
@@ -62,48 +62,47 @@ class Mapper extends \DB\Cursor {
 	}
 
 	/**
-	*	Delete field
-	*	@return NULL
-	*	@param $key string
+		Delete field
+		@return NULL
+		@param $key string
 	**/
 	function clear($key) {
-		if ($key!='_id')
-			unset($this->document[$key]);
+		unset($this->document[$key]);
 	}
 
 	/**
-	*	Convert array to mapper object
-	*	@return object
-	*	@param $id string
-	*	@param $row array
+		Convert array to mapper object
+		@return object
+		@param $id string
+		@param $row array
 	**/
 	protected function factory($id,$row) {
 		$mapper=clone($this);
 		$mapper->reset();
-		$mapper->id=$id;
-		foreach ($row as $field=>$val)
+		foreach ($row as $field=>$val) {
+			$mapper->id=$id;
 			$mapper->document[$field]=$val;
-		$mapper->query=array(clone($mapper));
-		if (isset($mapper->trigger['load']))
-			\Base::instance()->call($mapper->trigger['load'],$mapper);
+		}
+		$mapper->query=array($row);
+		$mapper->ptr=0;
 		return $mapper;
 	}
 
 	/**
-	*	Return fields of mapper object as an associative array
-	*	@return array
-	*	@param $obj object
+		Return fields of mapper object as an associative array
+		@return array
+		@param $obj object
 	**/
 	function cast($obj=NULL) {
 		if (!$obj)
 			$obj=$this;
-		return $obj->document+array('_id'=>$this->id);
+		return $obj->document;
 	}
 
 	/**
-	*	Convert tokens in string expression to variable names
-	*	@return string
-	*	@param $str string
+		Convert tokens in string expression to variable names
+		@return string
+		@param $str string
 	**/
 	function token($str) {
 		$self=$this;
@@ -115,7 +114,7 @@ class Mapper extends \DB\Cursor {
 					'/(\.\w+)|\[((?:[^\[\]]*|(?R))*)\]/',
 					function($expr) use($self) {
 						$fw=\Base::instance();
-						return
+						return 
 							'['.
 							($expr[1]?
 								$fw->stringify(substr($expr[1],1)):
@@ -134,12 +133,12 @@ class Mapper extends \DB\Cursor {
 	}
 
 	/**
-	*	Return records that match criteria
-	*	@return array|FALSE
-	*	@param $filter array
-	*	@param $options array
-	*	@param $ttl int
-	*	@param $log bool
+		Return records that match criteria
+		@return array|FALSE
+		@param $filter array
+		@param $options array
+		@param $ttl int
+		@param $log bool
 	**/
 	function find($filter=NULL,array $options=NULL,$ttl=0,$log=TRUE) {
 		if (!$options)
@@ -153,17 +152,13 @@ class Mapper extends \DB\Cursor {
 		$cache=\Cache::instance();
 		$db=$this->db;
 		$now=microtime(TRUE);
-		$data=array();
 		if (!$fw->get('CACHE') || !$ttl || !($cached=$cache->exists(
-			$hash=$fw->hash($this->db->dir().
-				$fw->stringify(array($filter,$options))).'.jig',$data)) ||
-			$cached[0]+$ttl<microtime(TRUE)) {
+			$hash=$fw->hash($fw->stringify(array($filter,$options))).'.jig',
+				$data)) || $cached+$ttl<microtime(TRUE)) {
 			$data=$db->read($this->file);
-			if (is_null($data))
-				return FALSE;
-			foreach ($data as $id=>&$doc) {
-				$doc['_id']=$id;
-				unset($doc);
+			foreach ($data as $key=>&$val) {
+				$val['_id']=$key;
+				unset($val);
 			}
 			if ($filter) {
 				if (!is_array($filter))
@@ -250,12 +245,9 @@ class Mapper extends \DB\Cursor {
 				$cache->set($hash,$data,$ttl);
 		}
 		$out=array();
-		foreach ($data as $id=>&$doc) {
-			unset($doc['_id']);
+		foreach ($data as $id=>$doc)
 			$out[]=$this->factory($id,$doc);
-			unset($doc);
-		}
-		if ($log && isset($args)) {
+		if ($log) {
 			if ($filter)
 				foreach ($args as $key=>$val) {
 					$vals[]=$fw->stringify(is_array($val)?$val[0]:$val);
@@ -269,62 +261,56 @@ class Mapper extends \DB\Cursor {
 	}
 
 	/**
-	*	Count records that match criteria
-	*	@return int
-	*	@param $filter array
-	*	@param $ttl int
+		Count records that match criteria
+		@return int
+		@param $filter array
 	**/
-	function count($filter=NULL,$ttl=0) {
+	function count($filter=NULL) {
 		$now=microtime(TRUE);
-		$out=count($this->find($filter,NULL,$ttl,FALSE));
+		$out=count($this->find($filter,NULL,FALSE));
 		$this->db->jot('('.sprintf('%.1f',1e3*(microtime(TRUE)-$now)).'ms) '.
 			$this->file.' [count] '.($filter?json_encode($filter):''));
 		return $out;
 	}
 
 	/**
-	*	Return record at specified offset using criteria of previous
-	*	load() call and make it active
-	*	@return array
-	*	@param $ofs int
+		Return record at specified offset using criteria of previous
+		load() call and make it active
+		@return array
+		@param $ofs int
 	**/
 	function skip($ofs=1) {
 		$this->document=($out=parent::skip($ofs))?$out->document:array();
 		$this->id=$out?$out->id:NULL;
-		if ($this->document && isset($this->trigger['load']))
-			\Base::instance()->call($this->trigger['load'],$this);
 		return $out;
 	}
 
 	/**
-	*	Insert new record
-	*	@return array
+		Insert new record
+		@return array
 	**/
 	function insert() {
 		if ($this->id)
 			return $this->update();
 		$db=$this->db;
 		$now=microtime(TRUE);
-		while (($id=uniqid(NULL,TRUE)) &&
+		while (($id=uniqid()) &&
 			($data=$db->read($this->file)) && isset($data[$id]) &&
 			!connection_aborted())
 			usleep(mt_rand(0,100));
 		$this->id=$id;
 		$data[$id]=$this->document;
-		$pkey=array('_id'=>$this->id);
 		$db->write($this->file,$data);
 		parent::reset();
 		$db->jot('('.sprintf('%.1f',1e3*(microtime(TRUE)-$now)).'ms) '.
-			$this->file.' [insert] '.json_encode($this->document));
-		if (isset($this->trigger['insert']))
-			\Base::instance()->call($this->trigger['insert'],
-				array($this,$pkey));
+			$this->file.' [insert] '.
+			json_encode(array('_id'=>$this->id)+$this->document));
 		return $this->document;
 	}
 
 	/**
-	*	Update current record
-	*	@return array
+		Update current record
+		@return array
 	**/
 	function update() {
 		$db=$this->db;
@@ -333,30 +319,26 @@ class Mapper extends \DB\Cursor {
 		$data[$this->id]=$this->document;
 		$db->write($this->file,$data);
 		$db->jot('('.sprintf('%.1f',1e3*(microtime(TRUE)-$now)).'ms) '.
-			$this->file.' [update] '.json_encode($this->document));
-		if (isset($this->trigger['update']))
-			\Base::instance()->call($this->trigger['update'],
-				array($this,array('_id'=>$this->id)));
+			$this->file.' [update] '.
+			json_encode(array('_id'=>$this->id)+$this->document));
 		return $this->document;
 	}
 
 	/**
-	*	Delete current record
-	*	@return bool
-	*	@param $filter array
+		Delete current record
+		@return bool
+		@param $filter array
 	**/
 	function erase($filter=NULL) {
 		$db=$this->db;
 		$now=microtime(TRUE);
 		$data=$db->read($this->file);
 		if ($filter) {
-			foreach ($this->find($filter,NULL,FALSE) as $mapper)
-				if (!$mapper->erase())
-					return FALSE;
-			return TRUE;
+			$data=$this->find($filter,NULL,FALSE);
+			foreach (array_keys(array_reverse($data)) as $id)
+				unset($data[$id]);
 		}
 		elseif (isset($this->id)) {
-			$pkey=array('_id'=>$this->id);
 			unset($data[$this->id]);
 			parent::erase();
 			$this->skip(0);
@@ -378,15 +360,12 @@ class Mapper extends \DB\Cursor {
 		$db->jot('('.sprintf('%.1f',1e3*(microtime(TRUE)-$now)).'ms) '.
 			$this->file.' [erase] '.
 			($filter?preg_replace($keys,$vals,$filter[0],1):''));
-		if (isset($this->trigger['erase']))
-			\Base::instance()->call($this->trigger['erase'],
-				array($this,$pkey));
 		return TRUE;
 	}
 
 	/**
-	*	Reset cursor
-	*	@return NULL
+		Reset cursor
+		@return NULL
 	**/
 	function reset() {
 		$this->id=NULL;
@@ -395,23 +374,19 @@ class Mapper extends \DB\Cursor {
 	}
 
 	/**
-	*	Hydrate mapper object using hive array variable
-	*	@return NULL
-	*	@param $key string
-	*	@param $func callback
+		Hydrate mapper object using hive array variable
+		@return NULL
+		@param $key string
 	**/
-	function copyfrom($key,$func=NULL) {
-		$var=\Base::instance()->get($key);
-		if ($func)
-			$var=$func($var);
-		foreach ($var as $key=>$val)
+	function copyfrom($key) {
+		foreach (\Base::instance()->get($key) as $key=>$val)
 			$this->document[$key]=$val;
 	}
 
 	/**
-	*	Populate hive array variable with mapper fields
-	*	@return NULL
-	*	@param $key string
+		Populate hive array variable with mapper fields
+		@return NULL
+		@param $key string
 	**/
 	function copyto($key) {
 		$var=&\Base::instance()->ref($key);
@@ -420,18 +395,10 @@ class Mapper extends \DB\Cursor {
 	}
 
 	/**
-	*	Return field names
-	*	@return array
-	**/
-	function fields() {
-		return array_keys($this->document);
-	}
-
-	/**
-	*	Instantiate class
-	*	@return void
-	*	@param $db object
-	*	@param $file string
+		Instantiate class
+		@return void
+		@param $db object
+		@param $file string
 	**/
 	function __construct(\DB\Jig $db,$file) {
 		$this->db=$db;
