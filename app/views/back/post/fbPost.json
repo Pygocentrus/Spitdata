@@ -1,0 +1,26 @@
+{
+    "collection": {
+        "version": "1.0",
+        "href": "http://localhost/Hetic/php/phpGenerator/",
+        "items": [
+            <repeat group="{{ @posts }}" value="{{ @post }}" counter="{{ @ctr }}">
+                {
+                    "firstname": "{{ trim(@post.firstname) }}",
+                    "lastname": "{{ trim(@post.lastname) }}",
+                    "pubDate": "{{ trim(@post.pubDate) }}",
+                    "content": "{{ trim(@post.content) }}",
+                    "likeCounter": "{{ trim(@post.likeCounter) }}",
+                    "comments": "{{ trim(@post.comments) }}"
+                }
+                <check if="{{ (sizeof(@posts)>1) && (@ctr<sizeof(@posts)) }}">
+                    <true>,</true>
+                </check>
+            </repeat>
+        ],
+        "template": {
+            "data": [
+                {"prompt" : "Text of message", "name" : "text", "value" : ""}
+            ]
+        }
+    }
+} 
