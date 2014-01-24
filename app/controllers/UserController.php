@@ -10,7 +10,7 @@ class UserController extends Controller{
         else
         	$this->f3->set('limit', 1);
         $this->f3->set('users',$user->all($this->f3->get('limit')));
-        $this->f3->set('finalView', 'user/user.json');
+        $this->f3->set('finalView', 'back/user/user.json');
         $this->f3->set('contentType', 'json');
 	}
 
