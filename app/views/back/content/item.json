@@ -1,0 +1,27 @@
+{
+    "collection": {
+        "version": "1.0",
+        "href": "http://localhost/Hetic/php/phpGenerator/",
+        "items": [
+            <repeat group="{{ @contents }}" value="{{ @content }}" counter="{{ @ctr }}">
+                {
+                    "name": "{{ trim(@content.name) }}",
+                    "price": "{{ trim(@content.price) }}",
+                    "description": "{{ trim(@content.description) }}",
+                    "inStock": "{{ trim(@content.inStock) }}",
+                    "storageCounter": "{{ trim(@content.storageCounter) }}",
+                    "picture": "{{ trim(@content.picture) }}",
+                    "recommandations": "{{ trim(@content.recommandations) }}"
+                }
+                <check if="{{ (sizeof(@contents)>1) && (@ctr<sizeof(@contents)) }}">
+                    <true>,</true>
+                </check>
+            </repeat>
+        ],
+        "template": {
+            "data": [
+                {"prompt" : "Text of message", "name" : "text", "value" : ""}
+            ]
+        }
+    }
+}
