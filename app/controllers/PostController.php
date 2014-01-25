@@ -9,8 +9,7 @@ class PostController extends Controller{
 		$postLimit        = ($rawPostLimit!=null) ? $rawPostLimit : 1;
 		if(in_array($postType, $allowedPostTypes) && preg_match('#^[1-9][0-9]{0,100}$#', $postLimit)){
 			$posts = new Post($this->db, $postType);
-			$this->f3->set('posts', $posts->all($postLimit));			
-			$this->f3->set('currentPage', 'post');
+			$this->f3->set('posts', $posts->all($postLimit));
 			$this->f3->set('contentType', 'json');
 			$this->f3->set('finalView', 'back/post/'.$postType.'.json');
 		}else{
