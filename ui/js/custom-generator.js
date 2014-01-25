@@ -14,3 +14,11 @@ myApp.controller('UserCtrl', ['$scope', function ($scope) {
     };
     
 }]);
+
+// Tab toggling
+$(document).ready(function(){
+	$('#myTab a').click(function (e) {
+	  e.preventDefault();
+	  $(this).tab('show');
+	});
+});
