@@ -7,7 +7,7 @@ class Content extends DB\SQL\Mapper {
     }
 
     public function all($limit) {
-        $this->load(array(), array('limit' => $limit));
+        $this->load(array(), array('limit' => $limit, "order" => 'RAND()'));
         return $this->query;
     }
 
