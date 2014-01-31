@@ -14,13 +14,21 @@
 				}else{
 					$this->f3->set('message', 'Wrong username or password');
 				}
-			}			
+			}
+			$this->f3->set('contentType', 'html');
 			$this->f3->set('currentPage', 'admin');
 			$this->f3->set('view', 'back/staticPages/admin.htm');
 		}
 
-		function download(){
-			
+		function add(){
+			$dataFile = $this->f3->get('POST.dataFile');
+			// $web->receive(function($file) {
+			// 	$this->f3->set('data', $file);
+			// 	$this->f3->set('ok', 'ok!');
+			// 	$this->f3->set('customFile', 'back/staticPages/test.htm');
+			// }, false, true);
+			$file = $_FILES['dataFile'];
+			$this->f3->set('data', $file);
 		}
 
 		function create(){
