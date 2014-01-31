@@ -15,30 +15,28 @@
 		  <!-- Users -->
 		  <div class="tab-pane active" id="users" ng-controller="UserCtrl">
 		  	<p>
-		  		<h3>Users handler</h3>
-		        <p>Welcome, <span class="username" ng-bind="user.details.username"></span></p>
-		        <p>User ID: <span class="id" ng-bind="user.details.id"></span></p>
+		        <div ng-include src="view.getView()"></div>
 		    </p>
 		  </div>
 
 		  <!-- Posts -->
-		  <div class="tab-pane" id="posts" ng-controller="PostCtrl">
+		  <div class="tab-pane" id="posts">
 		  	<p>
-		  		<h3>Posts handler</h3>
+		  		<h2>Posts handler</h2>
 		  	</p>
 		  </div>
 
 		  <!-- Contents -->
-		  <div class="tab-pane" id="contents" ng-controller="ContentCtrl">
+		  <div class="tab-pane" id="contents">
 		  	<p>
-		  		<h3>Contents handler</h3>
+		  		<h2>Contents handler</h2>
 		  	</p>
 		  </div>
 
 		  <!-- Images -->
-		  <div class="tab-pane" id="images" ng-controller="ImageCtrl">
+		  <div class="tab-pane" id="images">
 		  	<p>
-		  		<h3>Images handler</h3>
+		  		<h2>Images handler</h2>
 		  	</p>
 		  </div>
 

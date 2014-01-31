@@ -12,6 +12,12 @@ myApp.controller('UserCtrl', ['$scope', function ($scope) {
       "username": "John DOE",
       "id": "89101112"
     };
+
+    $scope.view = {
+	    getView: function() {
+	        return "front/customForm.html";
+	    }
+	};
     
 }]);
 
