@@ -3,7 +3,7 @@
 class UserController extends Controller{
 	
 	function index(){
-		$user         = new User($this->db);
+		$user         = new User();
 		$rawUserLimit = trim(htmlentities($this->f3->get('PARAMS.nbUsers')));
 		$userLimit    = ($rawUserLimit!=null) ? $rawUserLimit : 1;
 		if(preg_match('#^[1-9][0-9]*$#', $userLimit))

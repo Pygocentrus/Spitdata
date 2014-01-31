@@ -1,35 +1,35 @@
 <?php
 
-class Post extends DB\SQL\Mapper {
+class Post extends Model {
 
-    public function __construct(DB\SQL $db, $postType) {
-        parent::__construct($db, $postType);
+    public function __construct($postType) {
+        parent::__construct();
+        $this->mapper=$this->getMapper($postType);
     }
 
     public function all($limit) {
-        $this->load(array(), array('limit' => $limit, "order" => 'RAND()'));
-        return $this->query;
+        return $this->mapper->find(array(), array('limit' => $limit, "order" => 'RAND()'));
     }
 
     public function add() {
-        $this->copyFrom('POST');
-        $this->save();
+        $this->mapper->copyFrom('POST');
+        $this->mapper->save();
     }
 
     public function getById($id) {
-        $this->load(array('id=?',$id));
-        $this->copyTo('POST');
+        $this->mapper->load(array('id=?',$id));
+        $this->mapper->copyTo('POST');
     }
 
     public function edit($id) {
-        $this->load(array('id=?',$id));
-        $this->copyFrom('POST');
-        $this->update();
+        $this->mapper->load(array('id=?',$id));
+        $this->mapper->copyFrom('POST');
+        $this->mapper->update();
     }
 
     public function delete($id) {
-        $this->load(array('id=?',$id));
-        $this->erase();
+        $this->mapper->load(array('id=?',$id));
+        $this->mapper->erase();
     }
 }
 

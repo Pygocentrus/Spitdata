@@ -8,7 +8,7 @@ class PostController extends Controller{
 		$rawPostLimit     = trim(htmlentities($this->f3->get('PARAMS.nbPosts')));
 		$postLimit        = ($rawPostLimit!=null) ? $rawPostLimit : 1;
 		if(in_array($postType, $allowedPostTypes) && preg_match('#^[1-9][0-9]{0,100}$#', $postLimit)){
-			$posts = new Post($this->db, $postType);
+			$posts = new Post($postType);
 			$this->f3->set('posts', $posts->all($postLimit));
 			$this->f3->set('contentType', 'json');
 			$this->f3->set('finalView', 'back/post/'.$postType.'.json');

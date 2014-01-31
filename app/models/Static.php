@@ -1,9 +1,10 @@
 <?php
 
-class Static extends DB\SQL\Mapper {
+class Static extends Model {
 
-    public function __construct(DB\SQL $db) {
-        parent::__construct($db,'user');
+    public function __construct() {
+        parent::__construct();
+        $this->mapper=$this->getMapper('user');
     }
 
 }
