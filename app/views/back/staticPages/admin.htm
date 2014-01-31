@@ -1,0 +1,11 @@
+<check if="{{ @SESSION.username!=null }}">
+	<!-- Logged -->
+    <true>
+    	<include href="back/staticPages/adminDashboard.htm" />
+    </true>
+
+    <!-- Not logged -->
+    <false>
+		<include href="back/staticPages/adminLogin.htm" />
+    </false>
+</check>

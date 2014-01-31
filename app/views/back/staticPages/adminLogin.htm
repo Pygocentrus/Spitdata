@@ -1,0 +1,24 @@
+<!-- Flash message -->
+<check if="{{ @message!='' }}">    		
+	<div class="message alert alert-danger">
+		{{@message}}
+	</div>
+</check>
+
+<!-- Login interface -->
+<div class="login">
+	<h1>Please login</h1>
+	<form action="{{@BASE}}/admin" method="POST">
+		<table>
+			<tr>
+				<td>Username</td>
+				<td><input type="text" name="username" placeholder="Your username"/></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" name="password"/></td>
+			</tr>
+		</table>
+		<input type="submit" value="Send"/>
+	</form>
+</div>

@@ -1,6 +1,6 @@
 <?php 
 
-class StaticController extends Controller{
+class StaticController extends Controller {
 	
 	function index(){
 		$this->f3->set('currentPage', 'home');

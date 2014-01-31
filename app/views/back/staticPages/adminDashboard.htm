@@ -1,0 +1,39 @@
+<h1>Welcome, {{@SESSION.username}} !</h1><hr />
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th><h2>Column name</h2></th>
+			<th><h2>Actions</h2></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><h3>Users</h3></td>
+			<td><a href="{{@BASE}}/user/100" class="btn btn-success">See</a>&nbsp;<button class="btn btn-info">Add</button>&nbsp;<button class="btn btn-danger">Empty</button></td>
+		</tr>
+		<tr>
+			<td><h3>Articles</h3></td>
+			<td><a href="{{@BASE}}/post/article/100" class="btn btn-success">See</a>&nbsp;<button class="btn btn-info">Add</button>&nbsp;<button class="btn btn-danger">Empty</button></td>
+		</tr>
+		<tr>
+			<td><h3>Items</h3></td>
+			<td><a href="{{@BASE}}/content/item/100" class="btn btn-success">See</a>&nbsp;<button class="btn btn-info">Add</button>&nbsp;<button class="btn btn-danger">Empty</button></td>
+		</tr>
+		<tr>
+			<td><h3>Tweets</h3></td>
+			<td><a href="{{@BASE}}/post/tweet/100" class="btn btn-success">See</a>&nbsp;<button class="btn btn-info">Add</button>&nbsp;<button class="btn btn-danger">Empty</button></td>
+		</tr>
+		<tr>
+			<td><h3>Facebook status</h3></td>
+			<td><a href="{{@BASE}}/post/fbPost/100" class="btn btn-success">See</a>&nbsp;<button class="btn btn-info">Add</button>&nbsp;<button class="btn btn-danger">Empty</button></td>
+		</tr>
+		<tr>
+			<td><h3>Dates</h3></td>
+			<td><a href="{{@BASE}}/content/dates/100" class="btn btn-success">See</a>&nbsp;<button class="btn btn-info">Add</button>&nbsp;<button class="btn btn-danger">Empty</button></td>
+		</tr>
+		<tr>
+			<td><h3>Locations</h3></td>
+			<td><a href="{{@BASE}}/content/location/100" class="btn btn-success">See</a>&nbsp;<button class="btn btn-info">Add</button>&nbsp;<button class="btn btn-danger">Empty</button></td>
+		</tr>
+	</tbody>
+</table>
