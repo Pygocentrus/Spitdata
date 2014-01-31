@@ -27,8 +27,9 @@
 			// 	$this->f3->set('ok', 'ok!');
 			// 	$this->f3->set('customFile', 'back/staticPages/test.htm');
 			// }, false, true);
-			$file = $_FILES['dataFile'];
-			$this->f3->set('data', $file);
+			
+			// $file = $_FILES['dataFile'];
+			// $this->f3->set('data', $file);
 		}
 
 		function create(){
