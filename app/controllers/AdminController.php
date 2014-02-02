@@ -7,7 +7,7 @@
 			$password = trim(htmlentities($this->f3->get('POST.password')));
 			// $this->f3->set('SESSION.username', null);
 			if($username && $password){
-				$static = new StaticModel();
+				$static = new Admin();
 				if($static->getUser(array('username'=>$username, 'password'=>$password))){
 					$this->f3->set('SESSION.username', $username);
 					$this->f3->set('message', 'Welcome, '.$username.' !');
