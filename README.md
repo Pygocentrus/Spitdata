@@ -24,7 +24,7 @@
   </tr>
   <tr>
     <td><img src="https://fr.gravatar.com/userimage/56830188/27f071cc54b972a067dac620c3ddcaf9.png" alt="integrator"/></td>
-    <td><h4>BARLUET Guillaume</h4><h5>Integrator - Content Manager</h5></td>
+    <td><h4>BARLUET Guillaume</h4><h5>Integrator - Front-end Developer</h5></td>
     <td><a href="http://www.linkedin.com/profile/view?id=162167774"><img src="http://www.tlogistics.eu/wp-content/uploads/2013/01/Linkedin-Logo1.png" alt="LinkedIn"/></a></td>
   </tr>
 </table>
