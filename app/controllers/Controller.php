@@ -9,7 +9,7 @@ class Controller {
 		$this->f3->set('message','');
 	}
 
-	function afterroute() {	
+	function afterroute() {
 		if($this->f3->get('contentType')=='json')
 			echo Template::instance()->render($this->f3->get('finalView'), 'application/json');
 		else if($this->f3->get('contentType')=='html')

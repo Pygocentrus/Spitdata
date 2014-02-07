@@ -1,15 +1,15 @@
 <?php
 
-class Image extends Model {
+class Images extends Model {
 
     public function __construct() {
         parent::__construct();
-        $this->mapper=$this->getMapper(image);
+        $this->mapper=$this->getMapper('image');
     }
 
     public function all($limit) {
-        // return $this->mapper->find(array(), array('limit' => $limit, "order" => 'RAND()'));
-        return 'superimageall.jpg';
+        return $this->mapper->find(array(), array('limit' => $limit, "order" => 'RAND()'));
+        // return 'superimageall.jpg';
     }
 
     public function add() {

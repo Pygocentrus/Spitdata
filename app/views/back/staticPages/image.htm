@@ -1,2 +1,6 @@
 <h1>Images</h1>
-<img src="{{ trim(@images) }}" alt="">
+
+<repeat group="{{ @srcs }}" value="{{ @src }}" counter="{{ @ctr }}">
+    <img src="{{ @src }}" alt="">
+
+</repeat>
