@@ -15,15 +15,15 @@ class ImagesController extends Controller{
         $this->f3->set('limit', $limit);
 
         //list urls dir
-        $content = $this->f3->get('PARAMS.content');
-        $dirname = 'app/views/img/';
+        $selectedDirname = trim(htmlentities($this->f3->get('PARAMS.dirname'))).'/';
+        $dirname = 'app/views/img/'.$selectedDirname;
         $dir = opendir($dirname);
         $images = array();
         $counter = 0;
         while($file = readdir($dir)) {
             if($file != '.' && $file != '..' && !is_dir($dirname.$file) && preg_match('#.jpg$|.png$|.jpeg$|.gif$#', $file) && $counter < $imageLimit) {
                 $counter++;
-                $this->f3->set('file', 'img/'.$file);
+                $this->f3->set('file', 'img/'.$selectedDirname.$file);
                 $img = new \Image($this->f3->get('file'),TRUE);
                 array_push($images, $img);
             }
@@ -41,9 +41,15 @@ class ImagesController extends Controller{
         $this->f3->set('srcs', $srcs);
 
         //view
-		$this->f3->set('contentType', 'html');
-		$this->f3->set('currentPage', 'admin');
-		$this->f3->set('view', 'back/staticPages/image.htm');
+        if ($limit <= 1) {
+            $this->f3->set('contentType', 'html');
+            $this->f3->set('currentPage', 'image');
+            $this->f3->set('view', 'back/image/image.htm');
+        } else {
+            $this->f3->set('finalView', 'back/image/image.json');
+            $this->f3->set('contentType', 'json');
+        }
+
     }
 
 	function create(){

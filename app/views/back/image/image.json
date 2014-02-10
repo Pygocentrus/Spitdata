@@ -1,0 +1,22 @@
+{
+    "collection": {
+        "version": "1.0",
+        "href": "http://localhost/Hetic/php/phpGenerator/",
+        "items": [
+            <repeat group="{{ @srcs }}" value="{{ @src }}" counter="{{ @ctr }}">
+                {
+                    "type": "png",
+                    "url": "{{ @src }}"
+                }
+                <check if="{{ (sizeof(@srcs)>1) && (@ctr<sizeof(@srcs)) }}">
+                    <true>,</true>
+                </check>
+            </repeat>
+        ],
+        "template": {
+            "data": [
+                {"prompt" : "Text of message", "name" : "text", "value" : ""}
+            ]
+        }
+    }
+}
