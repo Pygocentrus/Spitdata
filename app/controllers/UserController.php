@@ -2,7 +2,7 @@
 
 class UserController extends Controller{
 	
-	function index(){
+	public function index(){
 		$user         = new User();
 		$rawUserLimit = trim(htmlentities($this->f3->get('PARAMS.nbUsers')));
 		$userLimit    = ($rawUserLimit!=null) ? $rawUserLimit : 1;
@@ -15,15 +15,15 @@ class UserController extends Controller{
         $this->f3->set('contentType', 'json');
 	}
 
-	function create(){
+	public function create(){
 
 	}
 
-	function update(){
+	public function update(){
 
 	}
 
-	function delete(){
+	public function delete(){
 
 	}
 

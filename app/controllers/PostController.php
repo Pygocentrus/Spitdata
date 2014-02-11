@@ -2,7 +2,7 @@
 
 class PostController extends Controller{
 	
-	function index(){
+	public function index(){
 		$allowedPostTypes = array('article', 'fbPost', 'tweet');
 		$postType         = trim(htmlentities($this->f3->get('PARAMS.postType')));
 		$rawPostLimit     = trim(htmlentities($this->f3->get('PARAMS.nbPosts')));
@@ -19,15 +19,15 @@ class PostController extends Controller{
 		}
 	}
 
-	function create(){
+	public function create(){
 
 	}
 
-	function update(){
+	public function update(){
 
 	}
 
-	function delete(){
+	public function delete(){
 		
 	}
 

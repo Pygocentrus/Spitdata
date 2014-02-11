@@ -7,4 +7,9 @@ $(document).ready(function(){
 		$('form[name=addFileForm]').get(0).setAttribute('action', newUrl);
 	});
 
+	$('.delete').confirmOn('click', function(e, confirmed){
+	    if(!confirmed) e.preventDefault();
+	    else window.location.href = e.target;
+	});
+
 });

@@ -2,9 +2,12 @@
 
 	class Admin extends Model {
 
-		public function __construct() {
+		public function __construct($table=NULL) {
 	        parent::__construct();
-	        $this->mapper=$this->getMapper('currentUser');
+	        if($table==NULL)
+	        	$this->mapper=$this->getMapper('currentUser');
+	        else
+	        	$this->mapper=$this->getMapper($table);
 	    }
 
 	    public function getUser($user) {
@@ -32,9 +35,8 @@
 	        $this->mapper->update();
 	    }
 
-	    public function delete($id) {
-	        $this->mapper->load(array('id=?',$id));
-	        $this->mapper->erase();
+	    public function deleteAll() {
+	        return $this->mapper->erase(array('content!=?','NULL'));
 	    }
 
 	}

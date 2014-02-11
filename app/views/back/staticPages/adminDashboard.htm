@@ -1,4 +1,12 @@
 <h1>Welcome, {{@SESSION.username}} !</h1><hr />
+<check if="{{isset(@messageType)}}">
+	<true>
+		<check if="{{@messageType==1}}">
+			<true><div class="message alert alert-success">{{@flashMessage}}</div></true>
+			<false><div class="message alert alert-danger">{{@flashMessage}}</div></false>
+		</check>
+	</true>
+</check>
 <table class="table table-hover table-striped">
 	<thead>
 		<tr>
@@ -12,7 +20,7 @@
 			<td>
 				<a href="{{@BASE}}/user/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="user" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
-				<button class="btn btn-danger">Empty</button>
+				<a href="{{@BASE}}/admin/delete/user" class="btn btn-danger delete">Empty</a>
 			</td>
 		</tr>
 		<tr>
@@ -20,7 +28,7 @@
 			<td>
 				<a href="{{@BASE}}/post/article/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="article" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
-				<button class="btn btn-danger">Empty</button>
+				<a href="{{@BASE}}/admin/delete/article" class="btn btn-danger delete">Empty</a>
 			</td>
 		</tr>
 		<tr>
@@ -28,7 +36,7 @@
 			<td>
 				<a href="{{@BASE}}/content/item/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="item" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
-				<button class="btn btn-danger">Empty</button>
+				<a href="{{@BASE}}/admin/delete/item" class="btn btn-danger delete">Empty</a>
 			</td>
 		</tr>
 		<tr>
@@ -36,7 +44,7 @@
 			<td>
 				<a href="{{@BASE}}/post/tweet/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="tweet" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
-				<button class="btn btn-danger">Empty</button>
+				<a href="{{@BASE}}/admin/delete/tweet" class="btn btn-danger delete">Empty</a>
 			</td>
 		</tr>
 		<tr>
@@ -44,7 +52,7 @@
 			<td>
 				<a href="{{@BASE}}/post/fbPost/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="fbPost" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
-				<button class="btn btn-danger">Empty</button>
+				<a href="{{@BASE}}/admin/delete/fbpost" class="btn btn-danger delete">Empty</a>
 			</td>
 		</tr>
 		<tr>
@@ -52,7 +60,7 @@
 			<td>
 				<a href="{{@BASE}}/content/dates/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="dates" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
-				<button class="btn btn-danger">Empty</button>
+				<a href="{{@BASE}}/admin/delete/dates" class="btn btn-danger delete">Empty</a>
 			</td>
 		</tr>
 		<tr>
@@ -60,7 +68,7 @@
 			<td>
 				<a href="{{@BASE}}/content/location/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="location" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
-				<button class="btn btn-danger">Empty</button>
+				<a href="{{@BASE}}/admin/delete/location" class="btn btn-danger delete">Empty</a>
 			</td>
 		</tr>
 	</tbody>
@@ -71,7 +79,7 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-    	<form action="{{@BASE}}/admin/add" method="POST" name="addFileForm">
+    	<form action="{{@BASE}}/admin/add" method="POST" name="addFileForm" enctype="multipart/form-data">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	        <h4 class="modal-title" id="myModalLabel">Adding fresh data</h4>

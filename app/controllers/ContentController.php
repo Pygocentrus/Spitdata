@@ -2,7 +2,7 @@
 
 class ContentController extends Controller {
 	
-	function index() {
+	public function index() {
 		$allowedContentTypes = array('location', 'dates', 'item');
 		$postType            = trim(htmlentities($this->f3->get('PARAMS.contentType')));
 		$rawContentLimit     = trim(htmlentities($this->f3->get('PARAMS.nbContents')));
@@ -20,15 +20,15 @@ class ContentController extends Controller {
 		}
 	}
 
-	function create(){
+	public function create(){
 
 	}
 
-	function update(){
+	public function update(){
 
 	}
 
-	function delete(){
+	public function delete(){
 		
 	}
 
