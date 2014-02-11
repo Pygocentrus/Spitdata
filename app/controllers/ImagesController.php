@@ -7,11 +7,7 @@ class ImagesController extends Controller{
         //imageLimit params
         $rawImageLimit = trim(htmlentities($this->f3->get('PARAMS.nbImages')));
         $imageLimit    = ($rawImageLimit!=null) ? $rawImageLimit : 1;
-        if(preg_match('#^[1-9][0-9]*$#', $imageLimit)) {
-            $limit = $imageLimit;
-        } else {
-            $limit = 1;
-        }
+        $limit = (preg_match('#^[1-9][0-9]*$#', $imageLimit)) ? $imageLimit : 1;
         $this->f3->set('limit', $limit);
 
         //list urls dir

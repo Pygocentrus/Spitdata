@@ -7,6 +7,7 @@ $(document).ready(function(){
 		$('form[name=addFileForm]').get(0).setAttribute('action', newUrl);
 	});
 
+	// Launches confirm modal for table deletion
 	$('.delete').confirmOn('click', function(e, confirmed){
 	    if(!confirmed) e.preventDefault();
 	    else window.location.href = e.target;
