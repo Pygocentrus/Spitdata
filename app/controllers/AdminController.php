@@ -20,34 +20,21 @@
 			$this->f3->set('view', 'back/staticPages/admin.htm');
 		}
 
-		public function add(){
-			// $f3->set('UPLOADS','uploads/'); // don't forget to set an Upload directory, and make it writable!
-			$web = new \Web();
-			$overwrite = true; // set to true, to overwrite an existing file; Default: false
-			$slug      = true; // rename file to filesystem-friendly version
-			$files = $web->receive(function($file){
-			        /* looks like:
-			          array(5) {
-			              ["name"] =>     string(19) "csshat_quittung.png"
-			              ["type"] =>     string(9) "image/png"
-			              ["tmp_name"] => string(14) "/tmp/php2YS85Q"
-			              ["error"] =>    int(0)
-			              ["size"] =>     int(172245)
-			            }
-			        */
-			        // $file['name'] already contains the slugged name now
-
-			        // File size must be < 2MB
-			        if($file['size'] > (2 * 1024 * 1024))
-			            return false; // this file is not valid, return false will skip moving it
-			        return true; // allows the file to be moved from php tmp dir to your defined upload dir
+		public function add($f3){
+			$overwrite = true;
+			$slug      = true;
+			$fichier=\Web::instance()->receive(function($file){
+			        
+			        print_r($file);
+			        
 			    },
 			    $overwrite,
 			    $slug
 			);
-			$this->f3->set('contentType', 'html');
-			$this->f3->set('currentPage', 'admin');
-			$this->f3->set('view', 'back/staticPages/test.htm');
+			exit;
+			// $this->f3->set('contentType', 'html');
+			// $this->f3->set('currentPage', 'admin');
+			// $this->f3->set('view', 'back/staticPages/test.htm');
 		}
 
 		public function create($filename){
