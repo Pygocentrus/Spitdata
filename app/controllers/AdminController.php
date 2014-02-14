@@ -22,13 +22,13 @@
 
 		public function add(){
 			$file            = $_FILES['dataFile'];
-			$fileName        = ($file) ? $this->f3->get('UPLOADS').$this->f3->camelcase($file['name']) : null;
-			$rowTable        = $this->f3->get('PARAMS.contentType');
+			$fileName        = $file ? $this->f3->get('UPLOADS').$this->f3->camelcase($file['name']) : null;
+			$rawTable        = $this->f3->get('PARAMS.contentType');
 			$allowedContents = array('article', 'dates', 'fbPost', 'item', 'location', 'tweet', 'user');
-			$table           = (isset($rowTable) && in_array($rowTable, $allowedContents)) ? htmlentities(trim($rowTable)) : null;
+			$table           = (isset($rawTable) && in_array($rawTable, $allowedContents)) ? htmlentities(trim($rawTable)) : null;
 			if(move_uploaded_file($file['tmp_name'], $fileName) && file_exists($fileName)){
-				$rowData = file_get_contents($fileName);
-				$data = json_decode($rowData, true);
+				$rawData = file_get_contents($fileName);
+				$data = json_decode($rawData, true);
 				if(json_last_error()===JSON_ERROR_NONE){
 					$admin = new Admin($table);
 					$admin->add($data['collection']['items'], $table);
