@@ -19,9 +19,26 @@
 	        return $this->mapper->find(array(), array('limit' => $limit, "order" => 'RAND()'));
 	    }
 
-	    public function add() {
-	        $this->mapper->copyFrom('POST');
-	        $this->mapper->save();
+	    public function add($array, $table) {
+	    	$query;
+	    	$keys;
+	    	$currentArray;
+	    	// For each element of the array
+	    	for($i=0; $i<sizeof($array); $i++){
+				$keys         = array_keys($array[$i]);
+				$currentArray = $array[$i];
+				$query="INSERT INTO ".$table." VALUES('', ";
+
+	    		// Creates the request for 1 element
+		    	for($j=0; $j<sizeof($keys); $j++){
+		    		if($j<=sizeof($array))
+		    			$query .= "'".addslashes($currentArray[$keys[$j]])."', ";
+		    		else
+		    			$query .= "'".addslashes($currentArray[$keys[$j]])."');";
+		    	}
+		    	// Exec this query
+		    	$this->dB->exec($query);
+	    	}
 	    }
 
 	    public function getById($id) {
