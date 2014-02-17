@@ -15,9 +15,7 @@
 					$this->f3->set('message', $this->f3->get('authError'));
 				}
 			}
-			$this->f3->set('contentType', 'html');
-			$this->f3->set('currentPage', 'admin');
-			$this->f3->set('view', 'back/staticPages/admin.htm');
+			$this->setRoutingVars(array('type'=>'html', 'page'=>'admin', 'view'=>'back/staticPages/admin.htm'));
 		}
 
 		public function add(){
@@ -40,9 +38,7 @@
 			}else{
 				$this->setStatus(array('messageType'=>'0', 'flashMessage'=>$this->f3->get('fileUploadError')));
 			}
-			$this->f3->set('contentType', 'html');
-			$this->f3->set('currentPage', 'admin');
-			$this->f3->set('view', 'back/staticPages/adminDashboard.htm');
+			$this->setRoutingVars(array('type'=>'html', 'page'=>'admin', 'view'=>'back/staticPages/adminDashboard.htm'));
 		}
 
 		public function delete(){
@@ -58,14 +54,18 @@
 					$this->setStatus(array('messageType'=>'0', 'flashMessage'=>$this->f3->get('invalidContentTypeError')));
 			}else
 				$this->setStatus(array('messageType'=>'0', 'flashMessage'=>$this->f3->get('invalidContentTypeError')));
-			$this->f3->set('contentType', 'html');
-			$this->f3->set('currentPage', 'admin');
-			$this->f3->set('view', 'back/staticPages/admin.htm');
+			$this->setRoutingVars(array('type'=>'html', 'page'=>'admin', 'view'=>'back/staticPages/admin.htm'));
 		}
 
 		public function setStatus($params){
 			$this->f3->set('messageType', $params['messageType']);
 			$this->f3->set('flashMessage', $params['flashMessage']);
+		}
+
+		public function setRoutingVars($params){
+			$this->f3->set('contentType', $params['type']);
+			$this->f3->set('currentPage', $params['page']);
+			$this->f3->set('view', $params['view']);
 		}
 
 		public function create($filename){
