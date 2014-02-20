@@ -8,7 +8,20 @@
                     "gender": "{{ trim(@user.gender) }}",
                     "title": "{{ trim(@user.title) }}",
                     "firstName": "{{ trim(@user.firstName) }}",
-                    "lastName": "{{ trim(@user.lastName) }}"
+                    "lastName": "{{ trim(@user.lastName) }}",
+                    "location": {
+                        "street": "{{trim(@user.street)}}",
+                        "zip": "{{trim(@user.zip)}}",
+                        "city": "{{trim(@user.city)}}"
+                    },
+                    "currentLocation":{
+                        "latitude": "{{trim(@user.currentLat)}}",
+                        "logitude": "{{trim(@user.currentLong)}}"
+                    },
+                    "email": "{{trim(@user.email)}}",
+                    "userName": "{{trim(@user.userName)}}",
+                    "password": "{{trim(@user.password)}}",
+                    "sha1password": "{{trim(@user.sha1Password)}}"
                 }
                 <check if="{{ (sizeof(@users)>1) && (@ctr<sizeof(@users)) }}">
                     <true>,</true>
