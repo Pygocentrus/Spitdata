@@ -9,6 +9,7 @@
 			if($username && $password){
 				$admin = new Admin();
 				if($admin->getUser(array('username'=>$username, 'password'=>$password))){
+					$this->f3->set('rowNumbers', $admin->getRowCounter());
 					$this->f3->set('SESSION.username', $username);
 					$this->f3->set('message', 'Welcome, '.$username.' !');
 				}else{
@@ -24,12 +25,13 @@
 			$rawTable        = $this->f3->get('PARAMS.contentType');
 			$allowedContents = array('article', 'dates', 'fbPost', 'item', 'location', 'tweet', 'user');
 			$table           = (isset($rawTable) && in_array($rawTable, $allowedContents)) ? htmlentities(trim($rawTable)) : null;
-			if(move_uploaded_file($file['tmp_name'], $fileName) && file_exists($fileName)){
+			if(move_uploaded_file($file['tmp_name'], $fileName) && file_exists($fileName) && !is_null($table)){
 				$rawData = file_get_contents($fileName);
 				$data = json_decode($rawData, true);
 				if(json_last_error()===JSON_ERROR_NONE){
 					$admin = new Admin($table);
 					$admin->add($data['collection']['items'], $table);
+					$this->f3->set('rowNumbers', $admin->getRowCounter());
 					$this->setStatus(array('messageType'=>'1', 'flashMessage'=>$this->f3->get('dataAdded')));
 				}
 				else{
@@ -49,6 +51,7 @@
 				if(in_array($contentType, $allowedContents)){
 					$admin = new Admin($contentType);
 					$status = $admin->deleteAll();
+					$this->f3->set('rowNumbers', $admin->getRowCounter());
 					$this->setStatus(array('messageType'=>'1', 'flashMessage'=>'Table '.$contentType.' cleared.'));
 				}else
 					$this->setStatus(array('messageType'=>'0', 'flashMessage'=>$this->f3->get('invalidContentTypeError')));

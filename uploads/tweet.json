@@ -1,0 +1,41 @@
+{
+    "collection": {
+        "version": "1.0",
+        "href": "http://spidata.com",
+        "contentType": "tweet",
+        "items": [
+            {
+                "username": "emeric",
+                "pseudo": "memeric",
+                "pubDate": "1370516014",
+                "content": "Nothing to do there... #WebSchoolFactory",
+                "reTweetCounter": "118",
+                "favoriteCounter": "67"
+            },
+            {
+                "username":"guillaume",
+                "pseudo": "gb2b",
+                "pubDate": "1373108014",
+                "content": "I'll try to get up early this morning... #Rodrigue",
+                "reTweetCounter": "12",
+                "favoriteCounter": "9"
+            },
+            {
+                "username":"sara",
+                "pseudo": "sh",
+                "pubDate": "1384260814",
+                "content": "Hey guys, we're up all night to get lucky ! #daftPunk",
+                "reTweetCounter": "82",
+                "favoriteCounter": "34"
+            },
+            {
+                "username":"pharell",
+                "pseudo": "pha",
+                "pubDate": "1386852814",
+                "content": "Clap along if you feel that happiness is the truth ! #HAPPY",
+                "reTweetCounter": "",
+                "favoriteCounter": ""
+            }
+        ]
+    }
+}

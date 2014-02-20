@@ -41,6 +41,17 @@
 	    	}
 	    }
 
+	    public function getRowCounter(){
+	    	$tables = array('article', 'dates', 'fbPost', 'item', 'location', 'tweet', 'user');
+	    	$rowNumbers = array();
+	    	foreach($tables as $table){
+	    		$this->mapper=$this->getMapper($table);
+	    		$cpt = sizeof($this->mapper->find(array()));
+	    		$rowNumbers[$table] = $cpt;
+	    	}
+	    	return $rowNumbers;
+	    }
+
 	    public function getById($id) {
 	        $this->mapper->load(array('id=?',$id));
 	        $this->mapper->copyTo('POST');

@@ -11,12 +11,14 @@
 	<thead>
 		<tr>
 			<th><h2>Column name</h2></th>
+			<th><h2>Row count</h2></th>
 			<th><h2>Actions</h2></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td><h3>Users</h3></td>
+			<td>{{@rowNumbers.user}}</td>
 			<td>
 				<a href="{{@BASE}}/user/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="user" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
@@ -25,6 +27,7 @@
 		</tr>
 		<tr>
 			<td><h3>Articles</h3></td>
+			<td>{{@rowNumbers.article}}</td>
 			<td>
 				<a href="{{@BASE}}/post/article/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="article" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
@@ -33,6 +36,7 @@
 		</tr>
 		<tr>
 			<td><h3>Items</h3></td>
+			<td>{{@rowNumbers.item}}</td>
 			<td>
 				<a href="{{@BASE}}/content/item/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="item" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
@@ -41,6 +45,7 @@
 		</tr>
 		<tr>
 			<td><h3>Tweets</h3></td>
+			<td>{{@rowNumbers.tweet}}</td>
 			<td>
 				<a href="{{@BASE}}/post/tweet/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="tweet" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
@@ -49,6 +54,7 @@
 		</tr>
 		<tr>
 			<td><h3>Facebook status</h3></td>
+			<td>{{@rowNumbers.fbPost}}</td>
 			<td>
 				<a href="{{@BASE}}/post/fbPost/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="fbPost" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
@@ -57,6 +63,7 @@
 		</tr>
 		<tr>
 			<td><h3>Dates</h3></td>
+			<td>{{@rowNumbers.dates}}</td>
 			<td>
 				<a href="{{@BASE}}/content/dates/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="dates" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
@@ -65,6 +72,7 @@
 		</tr>
 		<tr>
 			<td><h3>Locations</h3></td>
+			<td>{{@rowNumbers.location}}</td>
 			<td>
 				<a href="{{@BASE}}/content/location/100" class="btn btn-default">See</a>&nbsp;
 				<button class="btn btn-primary add" data-contentType="location" data-toggle="modal" data-target="#myModal">Add</button>&nbsp;
