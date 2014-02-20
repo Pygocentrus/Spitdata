@@ -9,9 +9,9 @@
 			if($username && $password){
 				$admin = new Admin();
 				if($admin->getUser(array('username'=>$username, 'password'=>$password))){
-					$this->f3->set('rowNumbers', $admin->getRowCounter());
 					$this->f3->set('SESSION.username', $username);
 					$this->f3->set('message', 'Welcome, '.$username.' !');
+					$this->f3->set('rowNumbers', $admin->getRowCounter());
 				}else{
 					$this->f3->set('message', $this->f3->get('authError'));
 				}
