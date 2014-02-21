@@ -1,0 +1,29 @@
+<h2>Posts handler</h2>
+<!-- <p>Welcome, <span class="username" ng-bind="user.details.username"></span></p>
+<p>User ID: <span class="id" ng-bind="user.details.id"></span></p> -->
+<div>
+	<form name="users" method="post" action="http://localhost/Hetic/php/phpProject/admin/send">
+		<h4>Live URL</h4>
+		<input type="text" name="liveUrl" value="/post/[[postType]]/[[nbPosts]]" readonly="readonly" class="liveUrl"/>&nbsp;
+		<input type="button" class="clipboard" value="cliboard"/>
+		<hr />
+		<h4>Customise-me</h4>
+		<table>
+			<tr>
+				<td>Post type</td>
+				<td>
+					<select name="postType" ng-model="postType" required>
+						<option value="tweet" selected>Tweets</option>
+						<option value="fbPost">Facebook posts</option>
+						<option value="article">Articles</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Number of posts</td>
+				<td><input type="text" name="nbPosts" ng-model="nbPosts" ng-pattern="/^[\d]{1,3}$/"/></td>
+			</tr>
+		</table>
+		<input type="submit" value="Generate" class="btn btn-primary generate"/>
+	</form>
+</div>

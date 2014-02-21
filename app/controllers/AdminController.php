@@ -35,7 +35,7 @@
 					$this->setStatus(array('messageType'=>'1', 'flashMessage'=>$this->f3->get('dataAdded')));
 				}
 				else{
-					$this->setStatus(array('messageType'=>'0', 'flashMessage'=>$this->f3->get('fileParsingError')));	
+					$this->setStatus(array('messageType'=>'0', 'flashMessage'=>$this->f3->get('fileParsingError')));
 				}
 			}else{
 				$this->setStatus(array('messageType'=>'0', 'flashMessage'=>$this->f3->get('fileUploadError')));
@@ -69,6 +69,48 @@
 			$this->f3->set('contentType', $params['type']);
 			$this->f3->set('currentPage', $params['page']);
 			$this->f3->set('view', $params['view']);
+		}
+
+		public function send(){
+			$tmpl         = \Template::instance();
+			$web          = \Web::instance();
+			$asked        = $this->f3->get('POST.liveUrl');
+			$allowedTypes = array('user', 'post', 'content');
+			$args         = explode('/', $asked);
+
+			if(in_array($args[1], $allowedTypes)){
+				switch ($args[1]) {
+					case 'user':	// users
+						$gender  = $args[2];
+						$nbUsers = ($args[3]!='') ? $args[3] : 1;
+						$model   = new UserController();
+						$this->f3->set('users', $model->getUsers(array('gender'=>$gender, 'limit'=>$nbUsers)));
+						$content = $tmpl->render('back/user/user.json');
+						break;
+					case 'post':
+						$nbPosts = ($args[3]!='') ? $args[3] : 1;
+						$model = new PostController();
+						$this->f3->set('posts', $model->getPosts(array('postType'=>$args[2], 'limit'=>$nbPosts)));
+						$content = $tmpl->render('back/post/'.$args[2].'.json');
+						break;
+					case 'content':	// dates, item, location
+						$nbContents = (sizeof($args)==4) ? $args[3] : null;
+						echo 'Post : '.$args[2].' - Posts : '.$nbContents;
+						switch($args[2]){
+							case 'dates':
+								break;
+							case 'item':
+								break;
+							case 'location':
+								break;
+						}
+						break;
+				}
+				$file = $this->f3->get('TMP').'content.json';
+				file_put_contents($file, $content);
+				$sent = $web->send($file, $web->mime($file), 512, TRUE);
+				exit;
+			}
 		}
 
 		public function create($filename){

@@ -7,8 +7,9 @@ class User extends Model {
         $this->mapper=$this->getMapper('user');
     }
 
-    public function all($limit) {
-        return $this->mapper->find(array(), array('limit' => $limit, "order" => 'RAND()'));
+    public function all($params) {
+        $gender = ($params['gender']!='both') ? array("gender=?",$params['gender']) : array();
+        return $this->mapper->find($gender, array('limit'=>$params['limit'], "order"=>'RAND()'));
     }
 
     public function add() {

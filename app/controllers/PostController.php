@@ -3,7 +3,7 @@
 class PostController extends Controller{
 	
 	public function index(){
-		$allowedPostTypes = array('article', 'fbPost', 'tweet');
+		$allowedPostTypes = array('article', 'fbpost', 'tweet');
 		$postType         = trim(htmlentities($this->f3->get('PARAMS.postType')));
 		$rawPostLimit     = trim(htmlentities($this->f3->get('PARAMS.nbPosts')));
 		$postLimit        = ($rawPostLimit!=null) ? $rawPostLimit : 1;
@@ -17,6 +17,11 @@ class PostController extends Controller{
 			$this->f3->set('contentType', 'html');
 			$this->f3->set('view', 'back/staticPages/404.htm');
 		}
+	}
+
+	public function getPosts($params){
+		$posts = new Post($params['postType']);
+        return $posts->all($params['limit']);
 	}
 
 	public function create(){
