@@ -14,7 +14,7 @@ class Controller {
 			echo Template::instance()->render($this->f3->get('finalView'), 'application/json');
 		else if($this->f3->get('contentType')=='html')
 			echo Template::instance()->render('back/layout.htm');
-		else
+		else if ($this->f3->get('customFile') != '')
 			echo Template::instance()->render($this->f3->get('customFile'));
 	}
 

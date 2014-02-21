@@ -1,14 +1,14 @@
 {
     "collection": {
         "version": "1.0",
-        "href": "http://localhost/Hetic/php/phpGenerator/",
+        "href": "http://localhost{{ @BASE }}",
         "items": [
-            <repeat group="{{ @srcs }}" value="{{ @src }}" counter="{{ @ctr }}">
+            <repeat group="{{ @limitArray }}" value="{{ @limit }}" counter="{{ @ctr }}">
                 {
-                    "type": "png",
-                    "url": "{{ @src }}"
+                    "type": "{{ @extension }}",
+                    "url": "{{ @BASE.'/images/'.@dirnames.@width.'/'.@height.'/'.@extension.'/1' }}"
                 }
-                <check if="{{ (sizeof(@srcs)>1) && (@ctr<sizeof(@srcs)) }}">
+                <check if="{{ (sizeof(@limitArray)>1) && (@ctr<sizeof(@limitArray)) }}">
                     <true>,</true>
                 </check>
             </repeat>
