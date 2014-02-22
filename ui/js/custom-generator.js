@@ -24,12 +24,6 @@ myApp.controller('PostCtrl', ['$scope', function ($scope) {
     };    
 }]);
 
-function ClipBoard(){
-    // holdtext.innerText = copytext.innerText;
-    // Copied = holdtext.createTextRange();
-    // Copied.execCommand("Copy");
-}
-
 // Tab toggling
 $(document).ready(function() {
     // GUI content tabs
@@ -39,6 +33,6 @@ $(document).ready(function() {
 	});
     // Copy to clipboard
     $('body').on('click', '.clipboard', function(e){
-        ClipBoard();
+        $(this).prev().select();
     });
 });
