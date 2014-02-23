@@ -11,7 +11,7 @@ myApp.controller('UserCtrl', ['$scope', function ($scope) {
 	    getView: function() {
 	        return "front/userForm.html";
 	    }
-	};    
+	};
 }]);
 //Posts
 myApp.controller('PostCtrl', ['$scope', function ($scope) {
@@ -21,7 +21,7 @@ myApp.controller('PostCtrl', ['$scope', function ($scope) {
         getView: function() {
             return "front/postForm.html";
         }
-    };    
+    };
 }]);
 
 // Tab toggling
@@ -33,6 +33,16 @@ $(document).ready(function() {
 	});
     // Copy to clipboard
     $('body').on('click', '.clipboard', function(e){
-        $(this).prev().select();
+        $(this).clipboard({
+            path: '../../ui/swf/jquery.clipboard.swf',
+            copy: function() {
+                var that = $(this);
+                that.attr('value', 'Copied !');
+                setTimeout(function(){
+                    that.attr('value', 'Copy to clipboard');
+                }, 2000);
+                return $('.liveUrl_'+that.data('id')).val();
+            }
+        });
     });
 });
