@@ -28,21 +28,56 @@ myApp.controller('PostCtrl', ['$scope', function ($scope) {
 $(document).ready(function() {
     // GUI content tabs
 	$('#myTab a').click(function (e) {
-	  e.preventDefault();
-	  $(this).tab('show');
-	});
-    // Copy to clipboard
-    $('body').on('click', '.clipboard', function(e){
-        $(this).clipboard({
-            path: '../../ui/swf/jquery.clipboard.swf',
-            copy: function() {
-                var that = $(this);
-                that.attr('value', 'Copied !');
-                setTimeout(function(){
-                    that.attr('value', 'Copy to clipboard');
-                }, 2000);
-                return $('.liveUrl_'+that.data('id')).val();
-            }
+	    e.preventDefault();
+
+        // Display tab content
+	    $(this).tab('show');
+
+        // Instanciate copy to clipboard feature
+        $('.clipboard').each(function(i){
+            var that = $(this);
+            that.clipboard({
+                path: '../../ui/swf/jquery.clipboard.swf',
+                copy: function() {
+                    that.attr('value', 'Copied !');
+                    setTimeout(function(){
+                        that.attr('value', 'Copy to clipboard');
+                    }, 2000);
+                    return $('.liveUrl_'+that.data('id')).val();
+                }
+            });
         });
-    });
+	});
+
+    // Copy to clipboard first instance
+    setTimeout(function(){
+        $('.clipboard').each(function(i){
+            var that = $(this);
+            that.clipboard({
+                path: '../../ui/swf/jquery.clipboard.swf',
+                copy: function() {
+                    that.attr('value', 'Copied !');
+                    setTimeout(function(){
+                        that.attr('value', 'Copy to clipboard');
+                    }, 2000);
+                    return $('.liveUrl_'+that.data('id')).val();
+                }
+            });
+        });
+    }, 1000);
+
+    // Copy to clipboard
+    // $('body').on('click', '.clipboard', function(e){
+    //     $(this).clipboard({
+    //         path: '../../ui/swf/jquery.clipboard.swf',
+    //         copy: function() {
+    //             var that = $(this);
+    //             that.attr('value', 'Copied !');
+    //             setTimeout(function(){
+    //                 that.attr('value', 'Copy to clipboard');
+    //             }, 2000);
+    //             return $('.liveUrl_'+that.data('id')).val();
+    //         }
+    //     });
+    // });
 });
