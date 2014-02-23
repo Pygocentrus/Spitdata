@@ -32,6 +32,7 @@
 					$admin = new Admin($table);
 					$admin->add($data['collection']['items'], $table);
 					$this->f3->set('rowNumbers', $admin->getRowCounter());
+					unlink($fileName);
 					$this->setStatus(array('messageType'=>'1', 'flashMessage'=>$this->f3->get('dataAdded')));
 				}
 				else{
@@ -87,7 +88,7 @@
 						$this->f3->set('users', $model->getUsers(array('gender'=>$gender, 'limit'=>$nbUsers)));
 						$content = $tmpl->render('back/user/user.json');
 						break;
-					case 'post':
+					case 'post':	// tweet, fbpost, article
 						$nbPosts = ($args[3]!='') ? $args[3] : 1;
 						$model = new PostController();
 						$this->f3->set('posts', $model->getPosts(array('postType'=>$args[2], 'limit'=>$nbPosts)));
@@ -103,6 +104,7 @@
 				$file = $this->f3->get('TMP').'content.json';
 				file_put_contents($file, $content);
 				$sent = $web->send($file, $web->mime($file), 512, TRUE);
+				unlink($file);
 				exit;
 			}
 		}
