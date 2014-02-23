@@ -26,10 +26,10 @@
 		  </div>
 
 		  <!-- Contents -->
-		  <div class="tab-pane" id="contents">
+		  <div class="tab-pane" id="contents" ng-controller="ContentCtrl">
 		  	<p>
-		  		<h2>Contents handler</h2>
-		  	</p>
+		        <div ng-include src="view.getView()"></div>
+		    </p>
 		  </div>
 
 		  <!-- Images -->

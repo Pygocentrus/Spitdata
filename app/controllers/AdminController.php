@@ -94,16 +94,10 @@
 						$content = $tmpl->render('back/post/'.$args[2].'.json');
 						break;
 					case 'content':	// dates, item, location
-						$nbContents = (sizeof($args)==4) ? $args[3] : null;
-						echo 'Post : '.$args[2].' - Posts : '.$nbContents;
-						switch($args[2]){
-							case 'dates':
-								break;
-							case 'item':
-								break;
-							case 'location':
-								break;
-						}
+						$nbContents = ($args[3]!='') ? $args[3] : 1;
+						$model = new ContentController();
+						$this->f3->set('contents', $model->getContents(array('contentType'=>$args[2], 'limit'=>$nbContents)));
+						$content = $tmpl->render('back/content/'.$args[2].'.json');
 						break;
 				}
 				$file = $this->f3->get('TMP').'content.json';

@@ -23,6 +23,16 @@ myApp.controller('PostCtrl', ['$scope', function ($scope) {
         }
     };
 }]);
+//Contents
+myApp.controller('ContentCtrl', ['$scope', function ($scope) {
+    $scope.contentType = 'item';
+    $scope.nbContents = 1;
+    $scope.view = {
+        getView: function() {
+            return "front/contentForm.html";
+        }
+    };
+}]);
 
 // Tab toggling
 $(document).ready(function() {

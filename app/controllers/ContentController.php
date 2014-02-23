@@ -20,6 +20,11 @@ class ContentController extends Controller {
 		}
 	}
 
+	public function getContents($params){
+		$contents = new Content($params['contentType']);
+        return $contents->all($params['limit']);
+	}
+
 	public function create(){
 
 	}
