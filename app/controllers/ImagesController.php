@@ -1,9 +1,8 @@
 <?php
 
 class ImagesController extends Controller{
-
+    private $limit, $dirname, $selectedDirname, $width, $height, $extension;
 	function index(){
-
         //imageLimit params
         $rawImageLimit = trim(htmlentities($this->f3->get('PARAMS.nbImages')));
         $imageLimit    = ($rawImageLimit!=null) ? $rawImageLimit : 1;
@@ -23,50 +22,44 @@ class ImagesController extends Controller{
         $width = $this->f3->get('PARAMS.width');
         $height = $this->f3->get('PARAMS.height');
 
+        // generate image
+        $this->f3->set('img','clkqdsnc');
+
+
         //view
         if ($limit <= 1) {
-
-            // listing files
-            $dir = opendir($dirname);
-            $images = array();
-            $counter = 0;
-            while($file = readdir($dir)) {
-                if($file != '.' && $file != '..' && !is_dir($dirname.$file) && preg_match('#.jpg$|.png$|.jpeg$|.gif$#', $file)) {
-                    $counter++;
-                    $img = 'img/'.$selectedDirname.$file;
-                    array_push($images, $img);
-                }
-            }
-            closedir($dir);
-
-            //create image
-            $index = array_rand($images, 1);
-            $img = new \Image($images[$index],FALSE, $this->f3->get('UI'));
-
-            //resize
-            $img->resize($width, $height);
-
-            // render
-            $img->render($extension);
-
+            $this->displayOne($dirname, $selectedDirname, $width, $height, $extension);
         } else {
-
-            // params
-            $limitArray = [];
-            for ($i=0;  $i < $limit ; $i++)
-                array_push($limitArray, $i);
-            $this->f3->set('limitArray',$limitArray);
-            $this->f3->set('dirnames',$selectedDirname);
-            $this->f3->set('width',$width);
-            $this->f3->set('height',$height);
-            $this->f3->set('extension',$extension);
-
-            //render
-            $this->f3->set('finalView', 'back/image/image.json');
-            $this->f3->set('contentType', 'json');
-
+            $this->listImages($limit, $selectedDirname , $width , $height, $extension);
         }
 
+    }
+
+    function displayOne () {
+        $this->generateImage($dirname, $selectedDirname, $width, $height, $img, $extension);
+        // render
+        $img->render($extension);
+    }
+
+    function listImages ($limit, $selectedDirname , $width , $height, $extension) {
+        // params
+        $limitArray = [];
+        for ($i=0;  $i < $limit ; $i++)
+            array_push($limitArray, $i);
+        $this->f3->set('limitArray',$limitArray);
+        $this->f3->set('dirnames',$selectedDirname);
+        $this->f3->set('width',$width);
+        $this->f3->set('height',$height);
+        $this->f3->set('extension',$extension);
+
+        //render
+        $this->f3->set('finalView', 'back/image/image.json');
+        $this->f3->set('contentType', 'json');
+    }
+
+    function zip ()
+    {
+        # code...
     }
 
 	function create(){
@@ -80,6 +73,27 @@ class ImagesController extends Controller{
 	function delete(){
 
 	}
+
+    function generateImage($dirname, $selectedDirname, $width, $height, $img, $extension)
+    {
+        // listing files
+        $dir = opendir($dirname);
+        $images = array();
+        $counter = 0;
+        while($file = readdir($dir)) {
+            if($file != '.' && $file != '..' && !is_dir($dirname.$file) && preg_match('#.jpg$|.png$|.jpeg$|.gif$#', $file)) {
+                $counter++;
+                $img = 'img/'.$selectedDirname.$file;
+                array_push($images, $img);
+            }
+        }
+        closedir($dir);
+        //create image
+        $index = array_rand($images, 1);
+        $img = new \Image($images[$index],FALSE, 'hello');
+        //resize
+        $img->resize($width, $height);
+    }
 
 }
 
