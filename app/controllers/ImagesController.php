@@ -103,6 +103,8 @@ class ImagesController extends Controller{
         $web = \Web::instance();
         $sent = $web->send($tmp.$zipName.'.zip', NULL, 512, true);
         if ( !$sent)  { echo "erreur"; };
+        $this->deleteFloder($url);
+        unlink($tmp.$zipName.'.zip');
     }
 
 	function create(){
@@ -138,6 +140,42 @@ class ImagesController extends Controller{
         $img = $img->resize($width, $height);
         $this->f3->set('img',$img);
     }
+
+    function deleteFloder ($directory, $empty = false) {
+    if(substr($directory,-1) == "/") {
+        $directory = substr($directory,0,-1);
+    }
+
+    if(!file_exists($directory) || !is_dir($directory)) {
+        return false;
+    } elseif(!is_readable($directory)) {
+        return false;
+    } else {
+        $directoryHandle = opendir($directory);
+
+        while ($contents = readdir($directoryHandle)) {
+            if($contents != '.' && $contents != '..') {
+                $path = $directory . "/" . $contents;
+
+                if(is_dir($path)) {
+                    supprimer_dossier($path);
+                } else {
+                    unlink($path);
+                }
+            }
+        }
+
+        closedir($directoryHandle);
+
+        if($empty == false) {
+            if(!rmdir($directory)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
 
 }
 
