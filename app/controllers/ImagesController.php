@@ -1,8 +1,11 @@
 <?php
 
 class ImagesController extends Controller{
-    private $limit, $dirname, $selectedDirname, $width, $height, $extension;
+    public $limit, $dirname, $selectedDirname, $width, $height, $extension, $img;
 	function index(){
+
+        global $img;
+
         //imageLimit params
         $rawImageLimit = trim(htmlentities($this->f3->get('PARAMS.nbImages')));
         $imageLimit    = ($rawImageLimit!=null) ? $rawImageLimit : 1;
@@ -22,26 +25,31 @@ class ImagesController extends Controller{
         $width = $this->f3->get('PARAMS.width');
         $height = $this->f3->get('PARAMS.height');
 
-        // generate image
-        $this->f3->set('img','clkqdsnc');
-
-
-        //view
-        if ($limit <= 1) {
-            $this->displayOne($dirname, $selectedDirname, $width, $height, $extension);
+        // action
+        if ($this->f3->get('PARAMS.zip')== 'zip' && $limit <= 20) {
+            $this->zip($limit, $dirname, $selectedDirname, $width, $height, $extension, $img);
         } else {
-            $this->listImages($limit, $selectedDirname , $width , $height, $extension);
+            if ($limit <= 1) {
+                $this->displayOne($dirname, $selectedDirname, $width, $height, $extension, $img);
+            } else {
+                $this->listImages($limit, $selectedDirname , $width , $height, $extension);
+            }
         }
 
     }
 
-    function displayOne () {
+    function displayOne ($dirname, $selectedDirname, $width, $height, $extension, $img) {
+
+        // generate image
         $this->generateImage($dirname, $selectedDirname, $width, $height, $img, $extension);
+        $img = $this->f3->get('img');
+
         // render
         $img->render($extension);
     }
 
     function listImages ($limit, $selectedDirname , $width , $height, $extension) {
+
         // params
         $limitArray = [];
         for ($i=0;  $i < $limit ; $i++)
@@ -57,9 +65,44 @@ class ImagesController extends Controller{
         $this->f3->set('contentType', 'json');
     }
 
-    function zip ()
-    {
-        # code...
+    function zip ($limit, $dirname, $selectedDirname, $width, $height, $extension, $img) {
+
+        $this->generateImage($dirname, $selectedDirname, $width, $height, $img, $extension);
+
+        // temporary folder
+        $tmp = $this->f3->get('TMP');
+        $foldername = rand(100000000,999999999);
+        $url = $tmp.$foldername;
+        mkdir($url);
+        $zip = new ZipArchive();
+        $zipName = 'Splitdata-Images-'.$width.'-'.$height;
+        if (file_exists($tmp.$zipName.'.zip')) {
+            unlink($tmp.$zipName.'.zip');
+        }
+        if($zip->open($tmp.$zipName.'.zip', ZipArchive::CREATE) === true) {
+            for ($i=0; $i < $limit; $i++) {
+                $this->generateImage($dirname, $selectedDirname, $width, $height, $img, $extension);
+                $img = $this->f3->get('img');
+                $imgString = $img->dump();
+                $newImg = imagecreatefromstring($imgString);
+                $file = $url.'/image'.$foldername.$i.'.'.$extension;
+                if ($extension == 'jpeg' || $extension == 'jpg') {
+                    imagejpeg($newImg, $file);
+                } else if ($extension == 'gif') {
+                    imagegif($newImg, $file);
+                } else {
+                    imagepng($newImg, $file);
+                }
+                $zip->addFile($file, $zipName.'/image-'.$width.'-'.$height.'-'.($i+1).'.'.$extension);
+            }
+        $zip->close();
+        } else {
+            echo 'Impossible d&#039;ouvrir &quot;Zip.zip<br/>';
+        }
+
+        $web = \Web::instance();
+        $sent = $web->send($tmp.$zipName.'.zip', NULL, 512, true);
+        if ( !$sent)  { echo "erreur"; };
     }
 
 	function create(){
@@ -92,7 +135,8 @@ class ImagesController extends Controller{
         $index = array_rand($images, 1);
         $img = new \Image($images[$index],FALSE, 'hello');
         //resize
-        $img->resize($width, $height);
+        $img = $img->resize($width, $height);
+        $this->f3->set('img',$img);
     }
 
 }
