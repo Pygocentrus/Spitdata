@@ -1,0 +1,51 @@
+<h2>Images</h2>
+<div>
+    <form name="users" method="post" action="http://localhost/Hetic/php/phpProject/admin/send">
+        <h4>Live URL</h4>
+        <input type="text" name="liveUrl" value="/images/[[dirname]]/[[width]]/[[height]]/[[extension]]/[[nbrImages]]/[[zip]]" readonly="readonly" class="liveUrl_1"/>&nbsp;
+        <input type="button" class="clipboard btn btn-xs btn-primary" data-id="1" value="Copy to clipboard"/>
+        <hr />
+        <h4>Customise-me</h4>
+        <table>
+            <tr>
+                <td>Theme<td/>
+                <td>
+                    <select name="extension" ng-model="dirname">
+                        <option value="articles">Articles</option>
+                        <option value="custom">Custom</option>
+                        <option value="items">Items</option>
+                        <option value="profile">Profile</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Width</td>
+                <td><input type="text" name="width" ng-model="width" ng-pattern="/^[\d]{1,4}$/"></td>
+            </tr>
+            <tr>
+                <td>Height</td>
+                <td><input type="text" name="height" ng-model="height" ng-pattern="/^[\d]{1,4}$/"></td>
+            </tr>
+            <tr>
+                <td>Extension<td/>
+                <td>
+                    <select name="extension" ng-model="extension">
+                        <option value="png">png</option>
+                        <option value="jpeg">jpeg</option>
+                        <option value="gif">gif</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Number of images</td>
+                <td><input type="text" name="nbrImages" ng-model="nbrImages" ng-pattern="/^[\d]{1,3}$/"></td>
+            </tr>
+            <tr>
+                <td>Zip</td>
+                <td><input type="radio" ng-model="zip" name="not" value=""><label for="not">Not</label><td/>
+                <td><input type="radio" ng-model="zip" name="zip" value="zip"><label for="zip">Zip</label><td/>
+            </tr>
+        </table>
+        <input type="submit" value="Generate" class="btn btn-primary generate"/>
+    </form>
+</div>

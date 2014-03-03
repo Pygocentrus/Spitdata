@@ -33,6 +33,20 @@ myApp.controller('ContentCtrl', ['$scope', function ($scope) {
         }
     };
 }]);
+// Images
+myApp.controller('ImagesCtrl', ['$scope', function ($scope) {
+    $scope.dirname = 'articles';
+    $scope.width = 600;
+    $scope.height = 400;
+    $scope.extension = 'png';
+    $scope.nbrImages = 4;
+    $scope.zip = '';
+    $scope.view = {
+        getView: function() {
+            return "front/imagesForm.html";
+        }
+    };
+}]);
 
 // Tab toggling
 $(document).ready(function() {
