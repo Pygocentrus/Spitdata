@@ -19,6 +19,11 @@ class PostController extends Controller{
 		}
 	}
 
+	public function getPosts($params){
+		$posts = new Post($params['postType']);
+        return $posts->all($params['limit']);
+	}
+
 }
 
 ?>
