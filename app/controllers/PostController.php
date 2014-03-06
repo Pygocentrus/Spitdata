@@ -19,23 +19,6 @@ class PostController extends Controller{
 		}
 	}
 
-	public function getPosts($params){
-		$posts = new Post($params['postType']);
-        return $posts->all($params['limit']);
-	}
-
-	public function create(){
-
-	}
-
-	public function update(){
-
-	}
-
-	public function delete(){
-		
-	}
-
 }
 
 ?>

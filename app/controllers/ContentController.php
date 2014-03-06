@@ -32,22 +32,14 @@ class ContentController extends Controller {
 		$year = (!empty($rawYear) && preg_match('/^[1-2][0-9]{3}$/', $rawYear)) ? $rawYear : null;
 		if(!is_null($year)){
 			$result = $web->request($url."&year=".$year);
-			print_r($result);
+			if($result)
+				$this->f3->set('movies', $result);
+			else
+				$this->f3->reroute('/api');
+			print_r($result['body']);
 		}else
 			$this->f3->reroute('/');
 		exit;
-	}
-
-	public function create(){
-
-	}
-
-	public function update(){
-
-	}
-
-	public function delete(){
-		
 	}
 
 }

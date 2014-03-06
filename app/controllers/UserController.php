@@ -23,18 +23,6 @@ class UserController extends Controller{
         return $user->all(array('limit'=>$params['limit'], 'gender'=>$params['gender']));
 	}
 
-	public function create(){
-
-	}
-
-	public function update(){
-
-	}
-
-	public function delete(){
-
-	}
-
 }
 
 ?>
