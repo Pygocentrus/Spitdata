@@ -13,24 +13,24 @@
         <div class="collapse navbar-collapse">
             <div class="panel-heading">Components</div>
             <ul class="nav nav-stacked">
-                <li class="active"><a href="#">Users</a></li>
+                <li class="active"><a href="{{@BASE}}/api#users">Users</a></li>
                 <li>
-                	<a href="#">Posts</a>
+                	<a href="{{@BASE}}/api#tweets">Posts</a>
                 	<ul>
-                		<li><a href="#">Tweets</a></li>
-                		<li><a href="#">Facebook</a></li>
-                		<li><a href="#">Articles</a></li>
+                		<li><a href="{{@BASE}}/api#tweets">Tweets</a></li>
+                		<li><a href="{{@BASE}}/api#fbPosts">Facebook</a></li>
+                		<li><a href="{{@BASE}}/api#articles">Articles</a></li>
                 	</ul>
                 </li>
                 <li>
-                	<a href="#">Contents</a>
+                	<a href="{{@BASE}}/api/#items">Contents</a>
                 	<ul>
-                		<li><a href="#">Items</a></li>
-                		<li><a href="#">Dates</a></li>
-                		<li><a href="#">Locations</a></li>
+                		<li><a href="{{@BASE}}/api#items">Items</a></li>
+                		<li><a href="{{@BASE}}/api#dates">Dates</a></li>
+                		<li><a href="{{@BASE}}/api#locations">Locations</a></li>
                 	</ul>
                 </li>
-                <li><a href="{{@BASE}}/api/#images">Images</a></li>
+                <li><a href="{{@BASE}}/api#images">Images</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
@@ -62,10 +62,10 @@
 	</div>
 	
 	<!-- Users section -->
-	<div class="users">
+	<div class="users" id="users">
 		<h2>Users</h2>
 		<div class="users-content">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
+			Hundreds of users in your database in a second? Just select the number you need :
 			<div class="code-preview">
 				<pre>http://spitdata.com/user/@user_number</pre>
 			</div>
@@ -73,56 +73,68 @@
 	</div>
 
 	<!-- Tweets section -->
-	<div class="tweets">
+	<div class="tweets" id="tweets">
 		<h2>Tweets</h2>
 		<div class="tweets-content">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
-			<div class="code-preview"></div>
+			You created a blog, portfolio or any other website and you want to fill it with posts? Choose your postType between Facebook (fbpost), Tweets (tweeter), articles (article) and select the number of posts you want !
+			<div class="code-preview">
+				<pre>http://spitdata.com/post/@postType/@nbPosts/</pre>
+			</div>
 		</div>
 	</div>
 
 	<!-- Facebook section -->
-	<div class="fbPosts">
+	<div class="fbPosts" id="fbPosts">
 		<h2>Facebook posts</h2>
 		<div class="fbPosts-content">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
-			<div class="code-preview"></div>
+			Facebook API like posts :
+			<div class="code-preview">
+				<pre>http://spitdata.com/post/fbpost/11/</pre>
+			</div>
 		</div>
 	</div>
 
 	<!--  section -->
-	<div class="articles">
+	<div class="articles" id="articles">
 		<h2>Articles</h2>
 		<div class="articles-content">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
-			<div class="code-preview"></div>
+			Become the fastest redactor with Spitdata.com : 
+			<div class="code-preview">
+				<pre>http://spitdata.com/post/article/14/</pre>
+			</div>
 		</div>
 	</div>
 
 	<!--  section -->
-	<div class="items">
+	<div class="items" id="items">
 		<h2>Items</h2>
 		<div class="items-content">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
-			<div class="code-preview"></div>
+			Fill your e-commerce website with items : 
+			<div class="code-preview">
+				<pre>http://spitdata.com/content/items/7</pre>
+			</div>
 		</div>
 	</div>
 
 	<!--  section -->
-	<div class="dates">
+	<div class="dates" id="dates">
 		<h2>Dates</h2>
 		<div class="dates-content">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
-			<div class="code-preview"></div>
+			Need some dates? Spitdata offers you dateTimestamp and dateToString :
+			<div class="code-preview">
+				<pre>http://spitdata.com/content/dates/18</pre>
+			</div>
 		</div>
 	</div>
 
 	<!--  section -->
-	<div class="locations">
+	<div class="locations" id="locations">
 		<h2>Locations</h2>
 		<div class="locations-content">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
-			<div class="code-preview"></div>
+			Where are you? Here is my longitude and my latitude :
+			<div class="code-preview">
+				<pre>http://spitdata.com/content/location/9</pre>
+			</div>
 		</div>
 	</div>
 
@@ -130,8 +142,15 @@
 	<div class="images" id="images">
 		<h2>Images</h2>
 		<div class="images-content">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
-			<div class="code-preview"></div>
+			Obtain images choosing the theme between articles illustration (articles), profiles pictures (profile), . Then choose the width width (in px) and height (in px) you want. Add the extension between png, jpg and gif and the number of images you want.
+			If you ask for one image, the image will appear in a window (content-type: image/@extension). If you ask for many images you will obtain some JSON.
+			<div class="code-preview"><pre>http://spitdata.com/image/@theme/@width/@height/@extension/@nbImages/@zip</div>
+			One image : 
+			<div class="code-preview"><pre>http://www.spitdata.com/image/articles/400/500/gif/1</pre></div>
+			Several images : 
+			<div class="code-preview"><pre>http://www.spitdata.com/image/articles/400/500/gif/6</pre></div>
+			If you want to obtain your images in a zip file, just add ‘zip’ at the end of you url.
+			<div class="code-preview"><pre>http://www.spitdata.com/image/articles/400/500/gif/6/zip</pre></div>
 		</div>
 	</div>
 

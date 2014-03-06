@@ -25,16 +25,21 @@ class ContentController extends Controller {
         return $contents->all($params['limit']);
 	}
 
-	public function create(){
-
-	}
-
-	public function update(){
-
-	}
-
-	public function delete(){
-		
+	public function getMovies(){
+		$web = \Web::instance();
+		$url = "https://api.themoviedb.org/3/discover/movie?api_key=55263b0ca3e0979c6508a2b35e765994";
+		$rawYear = trim(htmlentities($this->f3->get('PARAMS.year')));
+		$year = (!empty($rawYear) && preg_match('/^[1-2][0-9]{3}$/', $rawYear)) ? $rawYear : null;
+		if(!is_null($year)){
+			$result = $web->request($url."&year=".$year);
+			if($result)
+				$this->f3->set('movies', $result);
+			else
+				$this->f3->reroute('/api');
+			print_r($result['body']);
+		}else
+			$this->f3->reroute('/');
+		exit;
 	}
 
 }

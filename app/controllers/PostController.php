@@ -24,18 +24,6 @@ class PostController extends Controller{
         return $posts->all($params['limit']);
 	}
 
-	public function create(){
-
-	}
-
-	public function update(){
-
-	}
-
-	public function delete(){
-		
-	}
-
 }
 
 ?>
