@@ -5,6 +5,11 @@ class Controller {
 	protected $f3;
 	protected $db;
 
+	function __construct() {
+        $f3=Base::instance();
+		$this->f3=$f3;
+	}
+
 	function beforeroute() {
 		$this->f3->set('message','');
 	}
@@ -18,8 +23,15 @@ class Controller {
 			echo Template::instance()->render($this->f3->get('customFile'));
 	}
 
-	function __construct() {
-        $f3=Base::instance();
-		$this->f3=$f3;
+	protected function setStatus($params){
+		$this->f3->set('messageType', $params['messageType']);
+		$this->f3->set('flashMessage', $params['flashMessage']);
 	}
+
+	protected function setRoutingVars($params){
+		$this->f3->set('contentType', $params['type']);
+		$this->f3->set('currentPage', $params['page']);
+		$this->f3->set('view', $params['view']);
+	}
+
 }
