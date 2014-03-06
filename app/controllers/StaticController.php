@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 class StaticController extends Controller {
-	
+
 	public function index(){
 		$this->f3->set('currentPage', 'home');
 		$this->f3->set('contentType', 'html');
@@ -11,7 +11,7 @@ class StaticController extends Controller {
 	public function generator(){
 		$this->f3->set('currentPage', 'generator');
 		$this->f3->set('contentType', 'html');
-		$this->f3->set('view', 'back/staticPages/generator.htm');	
+		$this->f3->set('view', 'back/staticPages/generator.htm');
 	}
 
 	public function api(){
@@ -20,6 +20,11 @@ class StaticController extends Controller {
 		$this->f3->set('view', 'back/staticPages/api.htm');
 	}
 
+	public function notFound(){
+		$this->f3->set('currentPage', '404');
+		$this->f3->set('contentType', 'html');
+		$this->f3->set('view', 'back/staticPages/404.htm');
+	}
 }
 
 ?>

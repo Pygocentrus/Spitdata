@@ -94,7 +94,7 @@ class ImagesController extends Controller{
                     imagepng($newImg, $file);
                 }
                 $zip->addFile($file, $zipName.'/image-'.$width.'-'.$height.'-'.($i+1).'.'.$extension);
-            }
+        }
         $zip->close();
         } else {
             echo 'Impossible d&#039;ouvrir &quot;Zip.zip<br/>';
@@ -122,7 +122,11 @@ class ImagesController extends Controller{
     function generateImage($dirname, $selectedDirname, $width, $height, $img, $extension)
     {
         // listing files
-        $dir = opendir($dirname);
+        if (is_dir($dirname)) {
+            $dir = opendir($dirname);
+        } else {
+            $this->f3->reroute('/404');
+        }
         $images = array();
         $counter = 0;
         while($file = readdir($dir)) {
