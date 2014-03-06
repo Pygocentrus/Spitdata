@@ -13,24 +13,24 @@
         <div class="collapse navbar-collapse">
             <div class="panel-heading">Components</div>
             <ul class="nav nav-stacked">
-                <li class="active"><a href="#">Users</a></li>
+                <li class="active"><a href="{{@BASE}}/api#users">Users</a></li>
                 <li>
-                	<a href="#">Posts</a>
+                	<a href="{{@BASE}}/api#tweets">Posts</a>
                 	<ul>
-                		<li><a href="#">Tweets</a></li>
-                		<li><a href="#">Facebook</a></li>
-                		<li><a href="#">Articles</a></li>
+                		<li><a href="{{@BASE}}/api#tweets">Tweets</a></li>
+                		<li><a href="{{@BASE}}/api#fbPosts">Facebook</a></li>
+                		<li><a href="{{@BASE}}/api#articles">Articles</a></li>
                 	</ul>
                 </li>
                 <li>
-                	<a href="#">Contents</a>
+                	<a href="{{@BASE}}/api/#items">Contents</a>
                 	<ul>
-                		<li><a href="#">Items</a></li>
-                		<li><a href="#">Dates</a></li>
-                		<li><a href="#">Locations</a></li>
+                		<li><a href="{{@BASE}}/api#items">Items</a></li>
+                		<li><a href="{{@BASE}}/api#dates">Dates</a></li>
+                		<li><a href="{{@BASE}}/api#locations">Locations</a></li>
                 	</ul>
                 </li>
-                <li><a href="{{@BASE}}/api/#images">Images</a></li>
+                <li><a href="{{@BASE}}/api#images">Images</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
@@ -62,7 +62,7 @@
 	</div>
 	
 	<!-- Users section -->
-	<div class="users">
+	<div class="users" id="users">
 		<h2>Users</h2>
 		<div class="users-content">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
@@ -73,7 +73,7 @@
 	</div>
 
 	<!-- Tweets section -->
-	<div class="tweets">
+	<div class="tweets" id="tweets">
 		<h2>Tweets</h2>
 		<div class="tweets-content">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
@@ -82,7 +82,7 @@
 	</div>
 
 	<!-- Facebook section -->
-	<div class="fbPosts">
+	<div class="fbPosts" id="fbPosts">
 		<h2>Facebook posts</h2>
 		<div class="fbPosts-content">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
@@ -91,7 +91,7 @@
 	</div>
 
 	<!--  section -->
-	<div class="articles">
+	<div class="articles" id="articles">
 		<h2>Articles</h2>
 		<div class="articles-content">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
@@ -100,7 +100,7 @@
 	</div>
 
 	<!--  section -->
-	<div class="items">
+	<div class="items" id="items">
 		<h2>Items</h2>
 		<div class="items-content">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
@@ -109,7 +109,7 @@
 	</div>
 
 	<!--  section -->
-	<div class="dates">
+	<div class="dates" id="dates">
 		<h2>Dates</h2>
 		<div class="dates-content">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
@@ -118,7 +118,7 @@
 	</div>
 
 	<!--  section -->
-	<div class="locations">
+	<div class="locations" id="locations">
 		<h2>Locations</h2>
 		<div class="locations-content">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, cum, error quae non temporibus incidunt aperiam quas eaque similique dolor deserunt dignissimos nam sunt possimus ab. Veritatis libero fugiat adipisci.
