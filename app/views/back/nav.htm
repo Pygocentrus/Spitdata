@@ -1,37 +1,18 @@
-<nav class="navbar navbar-inverse" role="navigation">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="{{@BASE}}/">SpitData</a>
-  </div>
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-      <check if="{{ @currentPage=='home' }}">
-        <true><li class="active"><a href="{{@BASE}}/">Home</a></li></true>
-        <false><li><a href="{{@BASE}}/">Home</a></li></false>
-      </check>
+<header>
+    <div class="container">
+    <div class="logo">
+      <a href="{{@BASE}}/">SPITDATA</a>
+    </div>
+
+    <nav>
       <check if="{{ @currentPage=='generator' }}">
-        <true><li class="active"><a href="{{@BASE}}/generator">GUI generator</a></li></true>
-        <false><li><a href="{{@BASE}}/generator">GUI generator</a></li></false>
+        <true><a href="{{@BASE}}/generator" class="active">GUI GENERATOR</a></true>
+        <false><a href="{{@BASE}}/generator">GUI GENERATOR</a></false>
       </check>
       <check if="{{ @currentPage=='api' }}">
-        <true><li class="active"><a href="{{@BASE}}/api">API DOC</a></li></true>
-        <false><li><a href="{{@BASE}}/api">API DOC</a></li></false>
+        <true><a href="{{@BASE}}/api" class="active">API DOC</a></true>
+        <false><a href="{{@BASE}}/api">API DOC</a></false>
       </check>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-      	<form class="navbar-form navbar-left" role="search">
-	      <div class="form-group">
-	        <input type="text" class="form-control" placeholder="Search">
-	      </div>
-	      <button type="submit" class="btn btn-default">Submit</button>
-	    </form>
-      </li>
-    </ul>
-  </div>
-</nav>
+    </nav>
+    </div>
+</header>

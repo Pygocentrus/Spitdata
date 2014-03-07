@@ -5,8 +5,9 @@ var myApp = angular.module('myApp', [], function($interpolateProvider) {
 
 //Users
 myApp.controller('UserCtrl', ['$scope', function ($scope) {
-    $scope.nbUsers = 1;
-    $scope.gender = 'both';
+    $scope.nbContent = 1;
+    $scope.typeContent = 'both';
+    $scope.typeData = "user"
     $scope.view = {
 	    getView: function() {
 	        return "front/userForm.html";
@@ -15,8 +16,9 @@ myApp.controller('UserCtrl', ['$scope', function ($scope) {
 }]);
 //Posts
 myApp.controller('PostCtrl', ['$scope', function ($scope) {
-    $scope.postType = 'tweet';
-    $scope.nbPosts = 1;
+    $scope.typeContent = 'tweet';
+    $scope.nbContent = 1;
+    $scope.typeData = "post"
     $scope.view = {
         getView: function() {
             return "front/postForm.html";
@@ -25,8 +27,9 @@ myApp.controller('PostCtrl', ['$scope', function ($scope) {
 }]);
 //Contents
 myApp.controller('ContentCtrl', ['$scope', function ($scope) {
-    $scope.contentType = 'item';
-    $scope.nbContents = 1;
+    $scope.typeContent = 'items';
+    $scope.nbContent = 1;
+    $scope.typeData = "content"
     $scope.view = {
         getView: function() {
             return "front/contentForm.html";
@@ -63,9 +66,9 @@ $(document).ready(function() {
             that.clipboard({
                 path: '../../ui/swf/jquery.clipboard.swf',
                 copy: function() {
-                    that.attr('value', 'Copied !');
+                    that.attr('value', 'COPIED !');
                     setTimeout(function(){
-                        that.attr('value', 'Copy to clipboard');
+                        that.attr('value', 'COPY URL TO CLIPBOARD');
                     }, 2000);
                     return $('.liveUrl_'+that.data('id')).val();
                 }
@@ -80,15 +83,16 @@ $(document).ready(function() {
             that.clipboard({
                 path: '../../ui/swf/jquery.clipboard.swf',
                 copy: function() {
-                    that.attr('value', 'Copied !');
+                    that.attr('value', 'COPIED !');
                     setTimeout(function(){
-                        that.attr('value', 'Copy to clipboard');
+                        that.attr('value', 'COPY URL TO CLIPBOARD');
                     }, 2000);
                     return $('.liveUrl_'+that.data('id')).val();
                 }
             });
         });
     }, 1000);
+
 
     // Copy to clipboard
     // $('body').on('click', '.clipboard', function(e){

@@ -3,16 +3,22 @@
     <head>
         <base href="{{ @BASE.'/'.@UI }}" />        
         <title>{{ @site }}</title>
+
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
         <link href="../../ui/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../ui/css/fonts/fonts.css">
+        <link rel="stylesheet" href="../../ui/css/custom-style.css">
         <check if="{{@currentPage=='admin'}}">
             <link href="../../ui/css/jquery.confirmon.css" rel="stylesheet" media="screen">
         </check>
         <check if="{{@currentPage=='api'}}">
             <link href="../../ui/css/custom-admin.css" rel="stylesheet" media="screen">
         </check>
+        <link rel="icon" type="image/png" href="../../ui/assets/favicon.png">
     </head>
     <body>
         <include href="back/nav.htm" />
-        <div class="container">
+        

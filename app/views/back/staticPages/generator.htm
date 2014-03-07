@@ -1,19 +1,42 @@
 <div ng-app="myApp">
-	<h1>Generator</h1>
-    <div>
-    	<!-- Nav tabs -->
-		<ul class="nav nav-tabs" id="myTab">
-		  <li><a href="#users" data-toggle="tab">Users</a></li>
-		  <li><a href="#posts" data-toggle="tab">Posts</a></li>
-		  <li><a href="#contents" data-toggle="tab">Content</a></li>
-		  <li><a href="#images" data-toggle="tab">Images</a></li>
-		</ul>
+	<section class="section titleG">
+	<div class="container">
+			<div class="row">
+				<h2>Generator</h2>
+				<div class="separate"></div>
+			</div>
+	</div>
+	<section>
+		
+	
 
+	<section class="section choose-data">
+		<div class="container">
+			<div class="row">
+				<div class="number"><p>1</p></div>
+				<div class="title-data">
+					<h3>Choose your type of data</h3>
+					<p class="text-info">Lorem ipsum dolor sit amet, consectetur dipisicing elit se do tempor</p>
+				</div>
+			</div>
+			<div class="row list-datas" id="myTab">
+				<a href="#users" class="btn-data active">Users</a>
+				<a href="#posts" class="btn-data">Posts</a>
+				<a href="#contents" class="btn-data">Content</a>
+				<a href="#images" class="btn-data">Images</a>
+			</div>
+		</div>
+	</section>
+
+
+    
+    
 		<!-- Tab panes -->
 		<div class="tab-content">
 		  <!-- Users -->
 		  <div class="tab-pane active" id="users" ng-controller="UserCtrl">
 		  	<p>
+
 		        <div ng-include src="view.getView()"></div>
 		    </p>
 		  </div>
@@ -33,12 +56,15 @@
 		  </div>
 
 		  <!-- Images -->
-		  <div class="tab-pane" id="images" ng-controller="ImagesCtrl">
+		  <div class="tab-pane" id="images">
 		  	<p>
-		  		<div ng-include src="view.getView()"></div>
+		  		<h2>Images handler</h2>
 		  	</p>
 		  </div>
 
 		</div>
-    </div>
-</div>
+    
+
+
+	
+	

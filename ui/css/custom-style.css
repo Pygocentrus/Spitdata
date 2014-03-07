@@ -1,0 +1,671 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Name : STYLE.CSS
+Description : CSS of Spitdata website
+
+- Bases
+- Header (nav)
+- Footer
+
+- Home
+-- Section TOP
+-- Section Generator
+-- Section Steps
+-- Section API
+
+- Generator
+-- Section Choose Data
+-- TAB
+	-- Section LiveURL
+	-- Section Custom Data (For Users - Post - Content - Images)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+/**************************************************************
+                        BASES
+****************************************************************/
+
+body{
+	background : #ededed; /*grey color*/
+	font-family : "proxima_novalight";
+	color: #343434;
+	font-size: 24px;
+}
+
+a{
+
+	-webkit-transition: color 0.2s,background 0.2s, border 0.1s;
+	transition: color 0.2s,background 0.2s, border 0.1s;
+}
+a:hover{
+	text-decoration: none;
+	color: #fcfbfb;
+	-webkit-transition: color 0.2s,background 0.2s, border 0.1s;
+	transition: color 0.2s,background 0.2s, border 0.1s;
+}
+a:focus{
+	outline: none;
+	color: white;
+	text-decoration : none;
+}
+
+::-moz-selection { /* Pour firefox */
+background:#ff8100;
+color:white;
+}
+::-webkit-selection { /* Pour les autres */
+background: #ff8100;
+color:white;
+}
+::selection { /* Pour les autres */
+background: #ff8100;
+color:white;
+}
+
+/**************************************************************
+                        HEADER
+****************************************************************/
+
+header{
+	background : #ff8100; /*orange color*/
+	height: 100px;
+
+}
+
+header a{
+	color: white;
+}
+
+header .logo{
+	float: left;
+	font-family: "proxima_novablack";
+	font-size: 36px;
+	vertical-align: middle;
+	line-height: 100px;
+	letter-spacing: 2px;
+}
+
+header nav{
+	float: right;
+	font-family : "nexa_lightregular";
+}
+
+header nav a{
+	display: block;
+	float:left;
+	width: 250px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 100px;
+	border-left : 1px solid transparent;
+	border-right : 1px solid transparent;
+	letter-spacing: 1px;
+}
+header nav a:hover{
+	background: #F27900;
+	border-left : 1px solid #FF9122;
+	border-right : 1px solid #FF9122;
+
+}
+
+header nav a.active{
+	background: #F27900;
+	border-left : 1px solid #FF9122;
+	border-right : 1px solid #FF9122;
+
+}
+
+
+/**************************************************************
+                        FOOTER
+****************************************************************/
+
+footer{
+	margin-top: 100px;
+	height : 150px;
+	background: #272727;
+	color: #dbdbdb;
+	font: 14px "proxima_nova_rgregular";
+	text-align: center;
+}
+
+footer .slogan{ 
+}footer .slogan img{ 
+	margin-bottom: 10px;
+	max-width: 90px;
+}footer .support{ 
+	padding-top: 10px;
+}footer .social{ 
+	padding-top: 30px;
+}
+
+footer .support i{
+	font-size: 28px;
+	color: #ff8100;
+	margin-bottom: 10px;
+}
+footer .social i{
+	font-size: 34px;
+	color: white;
+	margin-bottom: 10px;
+	padding-left: 5px;
+}
+footer .social i:hover{color : rgba(255,255,255,0.8);}
+
+footer .social i:first-child{margin-left: 0px;}
+footer .row{
+	margin-top: 40px;
+}
+
+
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+						HOME (index.php)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+/**************************************************************
+                        HOME - SECTION TOP
+****************************************************************/
+
+.section.top{
+	text-align: center;
+}
+
+.section.top .logo_img{
+	margin-top: 50px;
+}
+
+.section.top h2{
+	font-family: "nexa_boldregular";
+	font-size: 36px;
+	margin-top: 50px;
+	text-transform: uppercase;
+}
+
+.section.top .steps{
+	margin: 40px 0px;
+}
+
+.section.top .back-img{
+	width: 180px;
+	height: 180px;
+	background : #ff8100;
+	border-radius: 5px;
+	margin: auto;
+	line-height: 180px;
+}
+
+.section.top .back-img img{
+	line-height: 180px;
+	vertical-align: middle;
+}
+
+.section.top h3{
+	font-family: "proxima_novaextrabold";
+	margin: 40px 0px;
+}
+
+a.button-api{
+	display: block;
+	height: 60px;
+	width: 300px;
+	margin: 0 auto;
+	border: 2px solid #343434;
+	border-radius: 40px;
+	color: #343434;
+	font-family: 'nexa_boldregular';
+	line-height: 60px;
+	vertical-align: middle;
+	margin-bottom: 80px;
+}
+
+a.button-api:hover{
+	background: #343434;
+	color : #fcfbfb;
+	
+}
+
+a.button-api i{
+	margin-right: 10px;
+}
+
+
+/**************************************************************
+                        HOME - SECTION GENERATOR
+****************************************************************/
+
+.section.generator{
+	background : #ff8100;
+	color: #fcfbfb;
+}
+
+.section.generator h2{
+	font-family: 'nexa_boldregular'; ;
+	font-size: 36px;
+	margin-top: 50px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.section.generator .separate{
+	height: 2px;
+	width: 200px;
+	margin: 20px auto;
+	background: #fcfbfb;
+	margin-bottom: 80px;
+}
+
+.section.generator .animation{
+	text-align : center;
+
+}
+.section.generator .animation img{
+	max-width:100%;
+}
+
+
+.section.generator .text{
+	text-align: right;
+	
+}
+
+.section.generator .text h3{
+	font: 24px "nexa_boldregular";
+}
+
+a.button-try{
+	display: block;
+	height: 60px;
+	width: 250px;
+	margin: 0 auto;
+	background : #39aecf;
+	color: #fcfbfb;
+	font-family: 'nexa_boldregular';
+	line-height: 60px;
+	vertical-align: middle;
+	margin-bottom: 80px;
+	float :right;
+	margin: 70px 0px;
+	text-align: center;
+
+	border-radius: 5px;
+}
+a.button-try:hover{
+	background : #56B9D6;
+}
+a.button-try i{
+	margin-right: 10px;
+}
+
+
+/**************************************************************
+                    HOME - SECTION DOC API
+****************************************************************/
+
+.section.api{
+}
+
+.section.api h2{
+	font-family: 'nexa_boldregular';
+	font-size: 36px;
+	margin-top: 50px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.section.api .separate{
+	height: 2px;
+	width: 200px;
+	margin: 20px auto;
+	background: #343434;
+	margin-bottom: 80px;
+}
+
+.section.api .animation{
+	text-align : right;
+
+}
+.section.api .animation img{
+	max-width:100%;
+	float: right;
+}
+
+
+.section.api .text{
+	text-align: left;
+	
+}
+
+.section.api .text h3{
+	font: 24px "nexa_boldregular";
+}
+
+a.button-access{
+	display: block;
+	height: 60px;
+	width: 250px;
+	margin: 0 auto;
+	background : #39aecf;
+	color: white;
+	font-family: 'nexa_boldregular';
+	line-height: 60px;
+	vertical-align: middle;
+	margin-bottom: 80px;
+	float : left;
+	margin: 70px 0px;
+	text-align: center;
+	border-radius: 5px;
+}
+a.button-access:hover{
+	background : #56B9D6;
+}
+a.button-access i{
+	padding-right: 10px;
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+					GENERATOR (generator.php)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+/**************************************************************
+                    GENERATOR - SECTION LIVE URL
+****************************************************************/
+
+.section.titleG h2{
+	font-family: 'nexa_boldregular';
+	font-size: 36px;
+	margin-top: 50px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.section.titleG .separate{
+	height: 2px;
+	width: 200px;
+	margin: 20px auto;
+	background: #343434;
+	margin-bottom: 80px;
+}
+
+.section.liveurl{
+	margin-left: -30px;
+}
+
+.section.liveurl form #text-url{
+	border: 2px solid #343434;
+	background: none;
+	padding: 0px 15px;
+	float: left;
+	width: 60%;
+	height: 35px;
+	margin-top: 2px;
+}
+
+
+.section.liveurl form #btn-copy{
+	background : #39aecf;
+	width: 280px;
+	height: 35px;
+	color: white;
+	font-size: 18px;
+	font-family: 'nexa_boldregular';
+	margin-bottom: 80px;
+	text-align: center;
+	border:none;
+}
+.section.liveurl form  #btn-copy:hover{background : #56B9D6;}
+.section.liveurl form  #btn-copy:focus{outline: none;}
+
+.section.liveurl form  .info{
+	font-size: 30px;
+	line-height: 35px;
+	vertical-align: middle;
+	margin-left: 40px;
+	color: #343434;
+}
+.section.liveurl form  .info:hover{color: #575757;}
+
+
+/**************************************************************
+                GENERATOR - SECTION CHOOSE-DATA
+****************************************************************/
+.section.choose-data{margin-top: 40px;}
+.section.choose-data .number{
+	width: 65px;
+	height: 65px;
+	border: 5px solid #343434;
+	border-radius: 999px;
+	float: left;
+}
+.section.choose-data .number p{
+	font-family: 'proxima_nova_rgbold';
+	font-size: 36px;
+	line-height: 60px;
+	text-align: center;
+	vertical-align: middle;
+}
+.section.choose-data .title-data{float: left;}
+.section.choose-data h3{
+	font-family: 'nexa_boldregular';
+	font-size: 36px;
+	text-transform: uppercase;
+	margin-top: 2px;
+	margin-left: 30px;
+}
+.section.choose-data p.text-info{
+	margin-top: -20px;
+	margin-left: 30px;
+	color :#343434;
+}
+
+.section.choose-data .list-datas{margin-top: 60px; margin-bottom: 100px;}
+.section.choose-data .list-datas a{
+	display: inline-block;
+	width: 200px;
+	height: 55px;
+	line-height: 55px;
+	vertical-align: middle;
+	margin-right: 20px;
+	border: 3px solid #343434;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'nexa_boldregular';
+	color: #343434;
+}
+
+.section.choose-data .list-datas a:hover,
+.section.choose-data .list-datas a.active{
+	background: #39aecf;
+	border: 3px solid #39aecf;
+	color: #fff;
+}
+
+/**************************************************************
+                GENERATOR - SECTION CUSTOM-DATA
+****************************************************************/
+
+.section.custom-data .number{
+	width: 65px;
+	height: 65px;
+	border: 5px solid #343434;
+	border-radius: 999px;
+	float: left;
+}
+.section.custom-data .number p{
+	font-family: 'proxima_nova_rgbold';
+	font-size: 36px;
+	line-height: 60px;
+	text-align: center;
+	vertical-align: middle;
+}
+.section.custom-data .title-data{float: left;}
+.section.custom-data h3{
+	font-family: 'nexa_boldregular';
+	font-size: 36px;
+	text-transform: uppercase;
+	margin-top: 2px;
+	margin-left: 30px;
+}
+.section.custom-data p.text-info{
+	margin-top: -20px;
+	margin-left: 30px;
+	color :#343434;
+	margin-bottom: 60px;
+}
+
+.section.custom-data form.form-data p{
+	float: left;
+	position: relative;
+}
+
+.section.custom-data form.form-data p.nb-users{margin-right: 100px;}
+.section.custom-data form.form-data p.nb-users label{cursor : pointer;}
+.section.custom-data form.form-data p.nb-users #nbUsers{
+	border: 3px solid #343434;
+	background: none;
+	text-align: center;
+	width: 100px;
+	margin-left: 20px;
+}
+.section.custom-data form.form-data p.nb-users #nbUsers:focus{
+	outline: none;
+}
+
+.section.custom-data form.form-data .radio p{
+	top: -30px;
+	margin-right: 80px;
+}
+.section.custom-data form.form-data .radio input[type=radio],
+.section.custom-data form.form-data .radio input[type=checkbox] {display: none;}
+.section.custom-data form.form-data .radio label:before {
+	content: "";
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	position:absolute;
+	top: 40px;
+	left: 10px;
+	text-align: center;
+	bottom: 1px;
+	background-color: none;
+	border: 2px solid #343434;
+	border-radius: 5px;
+	transition: all 0.2s;
+}
+.section.custom-data form.form-data .radio .label-female:before{left: 20px;}
+.section.custom-data form.form-data .radio input[type=radio]:checked + label:before {  
+    content: "\2714"; 
+    color: #f3f3f3;  
+    font-size: 20px;  
+    text-align: center;  
+    background-color: #39aecf;
+    border: 2px solid transparent;
+    margin: 0;
+    transition: all 0.2s;
+}  
+
+.section.custom-data form.form-data .submit{
+	margin-top: 150px;
+	text-align: center;
+}
+.section.custom-data form.form-data .submit input[type=submit]{
+	width: 300px;
+	height : 70px;
+	line-height: 70px;
+	vertical-align: middle;
+	text-align: center;
+	background: #39aecf;
+	color: white;
+	font: "nexa_boldregular";
+	text-transform: uppercase;
+	border: none;
+	border-radius: 30px;
+	transition: all 0.2s;
+}
+.section.custom-data form.form-data .submit input[type=submit]:hover{background : #56B9D6;transition: all 0.2s;}
+.section.custom-data form.form-data .submit input[type=submit]:focus{outline: none;}
+
+
+.section.custom-data .after-form{ 
+	text-align: center;
+	margin: 70px 0px 50px;
+}
+
+
+
+.section.custom-data form.form-data .radio.content p{
+	top: -30px;
+	margin-right: 80px;
+}
+.section.custom-data-content form.form-data .radio.content input[type=radio],
+.section.custom-data form.form-data .radio.content input[type=checkbox] {display: none;}
+.section.custom-data form.form-data .radio.content label:before {
+	content: "";
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	position:absolute;
+	top: 40px;
+	left: 15px;
+	text-align: center;
+	bottom: 1px;
+	background-color: none;
+	border: 2px solid #343434;
+	border-radius: 5px;
+	transition: all 0.2s;
+}
+.section.custom-data form.form-data .radio.content .label-location:before{left: 30px;}
+.section.custom-data form.form-data .radio.content input[type=radio]:checked + label:before {  
+    content: "\2714"; 
+    color: #f3f3f3;  
+    font-size: 20px;  
+    text-align: center;  
+    background-color: #39aecf;
+    border: 2px solid transparent;
+    margin: 0;
+    transition: all 0.2s;
+}  
+
+
+.section.custom-data form.form-data .radio.post p{
+	top: -30px;
+	margin-right: 80px;
+}
+.section.custom-data-content form.form-data .radio.post input[type=radio],
+.section.custom-data form.form-data .radio.post input[type=checkbox] {display: none;}
+.section.custom-data form.form-data .radio.post label:before {
+	content: "";
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	position:absolute;
+	top: 40px;
+	left: 20px;
+	text-align: center;
+	bottom: 1px;
+	background-color: none;
+	border: 2px solid #343434;
+	border-radius: 5px;
+	transition: all 0.2s;
+}
+.section.custom-data form.form-data .radio.post .label-facebook:before{left: 70px;}
+.section.custom-data form.form-data .radio.post .label-articles:before{left: 20px;}
+.section.custom-data form.form-data .radio.post input[type=radio]:checked + label:before {  
+    content: "\2714"; 
+    color: #f3f3f3;  
+    font-size: 20px;  
+    text-align: center;  
+    background-color: #39aecf;
+    border: 2px solid transparent;
+    margin: 0;
+    transition: all 0.2s;
+}  

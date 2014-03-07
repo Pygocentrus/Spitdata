@@ -1,27 +1,64 @@
-<h2>Contents</h2>
-<div>
-	<form name="users" method="post" action="http://localhost:8888/Hetic/php/phpProject/admin/send">
-		<h4>Live URL</h4>
-		<input type="text" name="liveUrl" value="/content/[[contentType]]/[[nbContents]]" readonly="readonly" class="liveUrl_3"/>&nbsp;
-		<input type="button" class="clipboard btn btn-xs btn-primary" data-id="3" value="Copy to clipboard"/>
-		<hr />
-		<h4>Customise-me</h4>
-		<table>
-			<tr>
-				<td>Content type</td>
-				<td>
-					<select name="contentType" ng-model="contentType" required>
-						<option value="item" selected>Items</option>
-						<option value="dates">Dates</option>
-						<option value="location">Locations</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>Number of contents</td>
-				<td><input type="text" name="nbContents" ng-model="nbContents" ng-pattern="/^[\d]{1,3}$/"/></td>
-			</tr>
-		</table>
-		<input type="submit" value="Generate" class="btn btn-primary generate"/>
-	</form>
-</div>
+<section class="section liveurl">
+	<div class="container">	
+		<div class="row">
+		<form>
+			<div class="col-md-12">
+				<input type="text" id="text-url" name="liveUrl" value="api.spitdata.com/[[typeData]]/[[typeContent]]/[[nbContent]]" readonly="readonly" class="liveUrl_3"/>
+			
+				<input type="button" id="btn-copy" name="btn-copy" class="clipboard" data-id="3" value="COPY URL TO CLIPBOARD"/>
+				<a href="#" class="info"><i class="fa fa-info-circle"></i></a>
+			</div>
+		</form>
+		</div>
+	</div>
+</section>
+
+
+<section class="section custom-data">
+		<div class="container">
+			<div class="row">
+				<div class="number"><p>2</p></div>
+				<div class="title-data">
+					<h3>Customise-me</h3>
+					<p class="text-info">Lorem ipsum dolor sit amet, consectetur dipisicing elit se do tempor</p>
+				</div>
+			</div>
+
+
+			
+			
+			<div class="row">
+				<form class="form-data" name="contents" method="post" action="http://localhost/Hetic/php/phpProject/admin/send">
+					
+
+					<p class="nb-users" >
+						<label for="nbUsers">Numbers of contents</label>
+						<input type="text" id="nbUsers" name="nbUsers" ng-model="nbContent" ng-pattern="/^[\d]{1,3}$/">
+					</p>
+					
+					<div class="radio content">
+						<p>  
+						   <input type="radio" id="items" name="type" ng-model="typeContent" value="items" checked>  
+						   <label for="items">Items</label>  
+						</p>  
+						<p>  
+						   <input type="radio" id="dates" name="type" ng-model="typeContent" value="dates">  
+						   <label for="dates">Dates</label>  
+						</p>  
+						<p>  
+						   <input type="radio" id="locations" name="type" ng-model="typeContent" value="locations">  
+						   <label for="locations" class="label-location">Locations</label>  
+						</p>   
+					</div>
+					
+					<div class="col-md-12 submit">
+						<input type="submit" value="Generate data" id="btn-submit">
+					</div>					
+				</form>
+			</div>
+
+			<div class="row after-form">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat. </p>
+			</div>
+		</div>
+	</section>
