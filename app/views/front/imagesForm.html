@@ -1,10 +1,10 @@
 <section class="section liveurl">
-    <div class="container"> 
+    <div class="container">
         <div class="row">
         <form>
             <div class="col-md-12">
                 <input type="text" id="text-url" name="liveUrl" value="spitdata.com/image/[[dirname]]/[[width]]/[[height]]/[[extension]]/[[nbrImages]]/[[zip]]" readonly="readonly" class="liveUrl_4"/>
-            
+
                 <input type="button" id="btn-copy" name="btn-copy" class="clipboard" data-id="4" value="COPY URL TO CLIPBOARD"/>
                 <a href="#" class="info"><i class="fa fa-info-circle"></i></a>
             </div>
@@ -20,44 +20,44 @@
                 <div class="number"><p>2</p></div>
                 <div class="title-data">
                     <h3>Customise-me</h3>
-                    <p class="text-info">Lorem ipsum dolor sit amet, consectetur dipisicing elit se do tempor</p>
+                    <p class="text-info">You're the boss, select what you want</p>
                 </div>
             </div>
 
 
-            
-            
+
+
             <div class="row">
                 <form class="form-data" name="contents" method="post" action="http://localhost/Hetic/php/phpProject/admin/send">
-                    
+
 
                     <p class="nb-users" >
                         <label for="nbUsers">Numbers of images</label>
                         <input type="text" id="nbUsers" name="nbUsers" ng-model="nbrImages" ng-pattern="/^[\d]{1,3}$/">
                     </p>
-                    
-                   
+
+
                     <div class="radio themes">
-                        
-                        <p>  
-                           <input type="radio" id="articles" name="theme" ng-model="dirname" value="articles" checked>  
-                           <label for="items">Articles</label>  
-                        </p>  
-                        <p>  
-                           <input type="radio" id="custom" name="theme" ng-model="dirname" value="custom">  
-                           <label for="custom">Custom</label>  
-                        </p>  
-                        <p>  
-                           <input type="radio" id="img-items" name="theme" ng-model="dirname" value="items">  
-                           <label for="img-items" class="label-location">Items</label>  
-                        </p>   
-                        <p>  
-                           <input type="radio" id="profile" name="theme" ng-model="dirname" value="profile">  
-                           <label for="profile" class="label-location">Profile</label>  
+
+                        <p>
+                           <input type="radio" id="articles" name="theme" ng-model="dirname" value="articles" checked>
+                           <label for="items">Articles</label>
+                        </p>
+                        <p>
+                           <input type="radio" id="custom" name="theme" ng-model="dirname" value="custom">
+                           <label for="custom">Custom</label>
+                        </p>
+                        <p>
+                           <input type="radio" id="img-items" name="theme" ng-model="dirname" value="items">
+                           <label for="img-items" class="label-location">Items</label>
+                        </p>
+                        <p>
+                           <input type="radio" id="profile" name="theme" ng-model="dirname" value="profile">
+                           <label for="profile" class="label-location">Profile</label>
                         </p>
                     </div>
 
-            
+
                     <br/>
                         <p class="width-form" >
                             <label for="width">Width</label>
@@ -70,43 +70,39 @@
                     <br/><br/>
 
                     <div class="col-md-12 radio extension">
-                        <p>  
+                        <p>
                            <input type="radio" id="png" name="img-extension" ng-model="extension" value="png" checked>
-                           <label for="png">PNG</label>  
-                        </p>  
-                        <p>  
-                           <input type="radio" id="jpeg" name="img-extension" ng-model="extension" value="jpeg">  
-                           <label for="jpeg">JPEG</label>  
-                        </p>  
-                        <p>  
-                           <input type="radio" id="gif" name="img-extension" ng-model="extension" value="gif">  
-                           <label for="gif">GIF</label>  
-                        </p>   
+                           <label for="png">PNG</label>
+                        </p>
+                        <p>
+                           <input type="radio" id="jpeg" name="img-extension" ng-model="extension" value="jpeg">
+                           <label for="jpeg">JPEG</label>
+                        </p>
+                        <p>
+                           <input type="radio" id="gif" name="img-extension" ng-model="extension" value="gif">
+                           <label for="gif">GIF</label>
+                        </p>
 
 
-                        
+
                     </div>
 
                     <div class="col-md-12 radio zip">
                             <p class="title_zip">Zip</p>
                             <p>
-                            <input type="radio" id="yes" name="zip" ng-model="zip" value="zip">  
+                            <input type="radio" id="yes" name="zip" ng-model="zip" value="zip">
                             <label for="yes">Yes</label>
                             </p>
                             <p>
-                            <input type="radio" id="no" name="zip" ng-model="zip" value="">  
+                            <input type="radio" id="no" name="zip" ng-model="zip" value="">
                             <label for="no">No</label>
                             </p>
                     </div>
-                    
+
                     <div class="col-md-12 submit">
                         <input type="submit" value="Generate data" id="btn-submit">
-                    </div>                  
+                    </div>
                 </form>
-            </div>
-
-            <div class="row after-form">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat. </p>
             </div>
         </div>
     </section>
