@@ -1,51 +1,112 @@
-<h2>Images</h2>
-<div>
-    <form name="users" method="post" action="http://localhost:8888/Hetic/php/phpProject/admin/send">
-        <h4>Live URL</h4>
-        <input type="text" name="liveUrl" value="/image/[[dirname]]/[[width]]/[[height]]/[[extension]]/[[nbrImages]]/[[zip]]" readonly="readonly" class="liveUrl_1"/>&nbsp;
-        <input type="button" class="clipboard btn btn-xs btn-primary" data-id="1" value="Copy to clipboard"/>
-        <hr />
-        <h4>Customise-me</h4>
-        <table>
-            <tr>
-                <td>Theme<td/>
-                <td>
-                    <select name="extension" ng-model="dirname">
-                        <option value="articles">Articles</option>
-                        <option value="custom">Custom</option>
-                        <option value="items">Items</option>
-                        <option value="profile">Profile</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Width</td>
-                <td><input type="text" name="width" ng-model="width" ng-pattern="/^[\d]{1,4}$/"></td>
-            </tr>
-            <tr>
-                <td>Height</td>
-                <td><input type="text" name="height" ng-model="height" ng-pattern="/^[\d]{1,4}$/"></td>
-            </tr>
-            <tr>
-                <td>Extension<td/>
-                <td>
-                    <select name="extension" ng-model="extension">
-                        <option value="png">png</option>
-                        <option value="jpeg">jpeg</option>
-                        <option value="gif">gif</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Number of images</td>
-                <td><input type="text" name="nbrImages" ng-model="nbrImages" ng-pattern="/^[\d]{1,3}$/"></td>
-            </tr>
-            <tr>
-                <td>Zip</td>
-                <td><input type="radio" ng-model="zip" name="not" value=""><label for="not">Not</label><td/>
-                <td><input type="radio" ng-model="zip" name="zip" value="zip"><label for="zip">Zip</label><td/>
-            </tr>
-        </table>
-        <input type="submit" value="Generate" class="btn btn-primary generate"/>
-    </form>
-</div>
+<section class="section liveurl">
+    <div class="container"> 
+        <div class="row">
+        <form>
+            <div class="col-md-12">
+                <input type="text" id="text-url" name="liveUrl" value="spitdata.com/image/[[dirname]]/[[width]]/[[height]]/[[extension]]/[[nbrImages]]/[[zip]]" readonly="readonly" class="liveUrl_4"/>
+            
+                <input type="button" id="btn-copy" name="btn-copy" class="clipboard" data-id="4" value="COPY URL TO CLIPBOARD"/>
+                <a href="#" class="info"><i class="fa fa-info-circle"></i></a>
+            </div>
+        </form>
+        </div>
+    </div>
+</section>
+
+
+<section class="section custom-data">
+        <div class="container">
+            <div class="row">
+                <div class="number"><p>2</p></div>
+                <div class="title-data">
+                    <h3>Customise-me</h3>
+                    <p class="text-info">Lorem ipsum dolor sit amet, consectetur dipisicing elit se do tempor</p>
+                </div>
+            </div>
+
+
+            
+            
+            <div class="row">
+                <form class="form-data" name="contents" method="post" action="http://localhost/Hetic/php/phpProject/admin/send">
+                    
+
+                    <p class="nb-users" >
+                        <label for="nbUsers">Numbers of images</label>
+                        <input type="text" id="nbUsers" name="nbUsers" ng-model="nbrImages" ng-pattern="/^[\d]{1,3}$/">
+                    </p>
+                    
+                   
+                    <div class="radio themes">
+                        
+                        <p>  
+                           <input type="radio" id="articles" name="theme" ng-model="dirname" value="articles" checked>  
+                           <label for="items">Articles</label>  
+                        </p>  
+                        <p>  
+                           <input type="radio" id="custom" name="theme" ng-model="dirname" value="custom">  
+                           <label for="custom">Custom</label>  
+                        </p>  
+                        <p>  
+                           <input type="radio" id="img-items" name="theme" ng-model="dirname" value="items">  
+                           <label for="img-items" class="label-location">Items</label>  
+                        </p>   
+                        <p>  
+                           <input type="radio" id="profile" name="theme" ng-model="dirname" value="profile">  
+                           <label for="profile" class="label-location">Profile</label>  
+                        </p>
+                    </div>
+
+            
+                    <br/>
+                        <p class="width-form" >
+                            <label for="width">Width</label>
+                            <input type="text" id="width" name="width" ng-model="width" ng-pattern="/^[\d]{1,4}$/">
+                        </p>
+                        <p class="height-form" >
+                            <label for="height">Height</label>
+                            <input type="text" id="height" name="height" ng-model="height" ng-pattern="/^[\d]{1,4}$/">
+                        </p>
+                    <br/><br/>
+
+                    <div class="col-md-12 radio extension">
+                        <p>  
+                           <input type="radio" id="png" name="img-extension" ng-model="extension" value="png" checked>
+                           <label for="png">PNG</label>  
+                        </p>  
+                        <p>  
+                           <input type="radio" id="jpeg" name="img-extension" ng-model="extension" value="jpeg">  
+                           <label for="jpeg">JPEG</label>  
+                        </p>  
+                        <p>  
+                           <input type="radio" id="gif" name="img-extension" ng-model="extension" value="gif">  
+                           <label for="gif">GIF</label>  
+                        </p>   
+
+
+                        
+                    </div>
+
+                    <div class="col-md-12 radio zip">
+                            <p class="title_zip">Zip</p>
+                            <p>
+                            <input type="radio" id="yes" name="zip" ng-model="zip" value="zip">  
+                            <label for="yes">Yes</label>
+                            </p>
+                            <p>
+                            <input type="radio" id="no" name="zip" ng-model="zip" value="">  
+                            <label for="no">No</label>
+                            </p>
+                    </div>
+                    
+                    <div class="col-md-12 submit">
+                        <input type="submit" value="Generate data" id="btn-submit">
+                    </div>                  
+                </form>
+            </div>
+
+            <div class="row after-form">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat. </p>
+            </div>
+        </div>
+    </section>

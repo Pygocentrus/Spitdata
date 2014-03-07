@@ -490,7 +490,7 @@ a.button-access i{
 }
 
 /**************************************************************
-                GENERATOR - SECTION CUSTOM-DATA
+                GENERATOR - SECTION CUSTOM-DATA FOR USERS
 ****************************************************************/
 
 .section.custom-data .number{
@@ -540,13 +540,13 @@ a.button-access i{
 	outline: none;
 }
 
-.section.custom-data form.form-data .radio p{
+.section.custom-data form.form-data .radio.users p{
 	top: -30px;
 	margin-right: 80px;
 }
 .section.custom-data form.form-data .radio input[type=radio],
 .section.custom-data form.form-data .radio input[type=checkbox] {display: none;}
-.section.custom-data form.form-data .radio label:before {
+.section.custom-data form.form-data .radio.users label:before {
 	content: "";
 	display: inline-block;
 	width: 30px;
@@ -561,8 +561,8 @@ a.button-access i{
 	border-radius: 5px;
 	transition: all 0.2s;
 }
-.section.custom-data form.form-data .radio .label-female:before{left: 20px;}
-.section.custom-data form.form-data .radio input[type=radio]:checked + label:before {  
+.section.custom-data form.form-data .radio.users .label-female:before{left: 20px;}
+.section.custom-data form.form-data .radio.users input[type=radio]:checked + label:before {  
     content: "\2714"; 
     color: #f3f3f3;  
     font-size: 20px;  
@@ -600,7 +600,9 @@ a.button-access i{
 	margin: 70px 0px 50px;
 }
 
-
+/**************************************************************
+                GENERATOR - SECTION CUSTOM-DATA FOR CONTENT
+****************************************************************/
 
 .section.custom-data form.form-data .radio.content p{
 	top: -30px;
@@ -635,6 +637,9 @@ a.button-access i{
     transition: all 0.2s;
 }  
 
+/**************************************************************
+                GENERATOR - SECTION CUSTOM-DATA FOR POST
+****************************************************************/
 
 .section.custom-data form.form-data .radio.post p{
 	top: -30px;
@@ -669,3 +674,214 @@ a.button-access i{
     margin: 0;
     transition: all 0.2s;
 }  
+
+
+/**************************************************************
+                GENERATOR - SECTION CUSTOM-DATA FOR IMAGES
+****************************************************************/
+
+
+.section.custom-data form.form-data .radio.themes p{
+	top: -30px;
+	margin-right: 50px;
+}
+.section.custom-data form.form-data p.title_radio{
+	top: 0px;
+	color: black;
+	margin-right: 40px;
+}
+.section.custom-data-content form.form-data .radio.themes input[type=radio],
+.section.custom-data form.form-data .radio.themes input[type=checkbox] {display: none;}
+.section.custom-data form.form-data .radio.themes label:before {
+	content: "";
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	position:absolute;
+	top: 40px;
+	left: 20px;
+	text-align: center;
+	bottom: 1px;
+	background-color: none;
+	border: 2px solid #343434;
+	border-radius: 5px;
+	transition: all 0.2s;
+}
+.section.custom-data form.form-data .radio.themes .label-facebook:before{left: 70px;}
+.section.custom-data form.form-data .radio.themes .label-articles:before{left: 20px;}
+.section.custom-data form.form-data .radio.themes input[type=radio]:checked + label:before {  
+    content: "\2714"; 
+    color: #f3f3f3;  
+    font-size: 20px;  
+    text-align: center;  
+    background-color: #39aecf;
+    border: 2px solid transparent;
+    margin: 0;
+    transition: all 0.2s;
+}  
+
+
+.section.custom-data form.form-data p.width-form{margin: 20px 100px 20px 0px;}
+.section.custom-data form.form-data p.width-form label{cursor : pointer;}
+.section.custom-data form.form-data p.width-form #width{
+	border: 3px solid #343434;
+	background: none;
+	text-align: center;
+	width: 100px;
+	margin-left: 20px;
+}
+.section.custom-data form.form-data p.width-form #width:focus{
+	outline: none;
+}
+
+.section.custom-data form.form-data p.height-form{margin: 20px 100px 20px 0px;}
+.section.custom-data form.form-data p.height-form label{cursor : pointer;}
+.section.custom-data form.form-data p.height-form #height{
+	border: 3px solid #343434;
+	background: none;
+	text-align: center;
+	width: 100px;
+	margin-left: 20px;
+}
+.section.custom-data form.form-data p.height-form #height:focus{
+	outline: none;
+}
+
+.section.custom-data form.form-data .radio.extension{margin-top: 30px;margin-left: -20px;}
+.section.custom-data form.form-data .radio.extension p{
+	top: 0px;
+	margin-right: 50px;
+}
+.section.custom-data-content form.form-data .radio.extension input[type=radio],
+.section.custom-data form.form-data .radio.extension input[type=checkbox] {display: none;}
+.section.custom-data form.form-data .radio.extension label:before {
+	content: "";
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	position:absolute;
+	top: 40px;
+	left: 10px;
+	text-align: center;
+	bottom: 1px;
+	background-color: none;
+	border: 2px solid #343434;
+	border-radius: 5px;
+	transition: all 0.2s;
+}
+.section.custom-data form.form-data .radio.extension .label-facebook:before{left: 70px;}
+.section.custom-data form.form-data .radio.extension .label-articles:before{left: 20px;}
+.section.custom-data form.form-data .radio.extension input[type=radio]:checked + label:before {  
+    content: "\2714"; 
+    color: #f3f3f3;  
+    font-size: 20px;  
+    text-align: center;  
+    background-color: #39aecf;
+    border: 2px solid transparent;
+    margin: 0;
+    transition: all 0.2s;
+}  
+
+
+
+.section.custom-data form.form-data .radio.zip{margin-top: 70px;margin-left: -20px;}
+.section.custom-data form.form-data .radio.zip p{
+	top: 0px;
+	margin-right: 60px;
+}.section.custom-data form.form-data .radio.zip p.title_zip{margin-right: 80px;}
+.section.custom-data-content form.form-data .radio.zip input[type=radio],
+.section.custom-data form.form-data .radio.zip input[type=checkbox] {display: none;}
+.section.custom-data form.form-data .radio.zip label:before {
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	bottom: 0px;
+	position: absolute;
+	top: 5px;
+	left: -30px;
+	text-align: center;
+	
+	background-color: none;
+	border: 2px solid #343434;
+	border-radius: 999px;
+	transition: all 0.2s;
+}
+.section.custom-data form.form-data .radio.zip .label-facebook:before{left: 70px;}
+.section.custom-data form.form-data .radio.zip .label-articles:before{left: 20px;}
+.section.custom-data form.form-data .radio.zip input[type=radio]:checked + label:before {  
+    content: "\2022"; 
+    color: #f3f3f3;  
+    font-size: 10px;  
+    text-align: center;  
+    background-color: #39aecf;
+    border: 2px solid transparent;
+    margin: 0;
+    transition: all 0.2s;
+}  
+
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+					API DOC (api.php)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+/**************************************************************
+                    API DOC - SECTION TITLE
+****************************************************************/
+
+.section.titleAPI h2{
+	font-family: 'nexa_boldregular';
+	font-size: 36px;
+	margin-top: 50px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+
+
+.section.titleAPI .separate{
+	height: 2px;
+	width: 200px;
+	margin: 20px auto;
+	background: #343434;
+	margin-bottom: 80px;
+}
+
+.section.contentAPI h3{
+	font-family: 'nexa_boldregular';
+	font-size: 24px;
+	margin-top: 80px;
+}
+
+.section.contentAPI #intro h3{
+	margin-top: 0px;
+}
+
+.section.contentAPI .api-nav nav{
+	width: 250px;
+	padding: 20px 0px;
+	background: none;
+	height: 600px;
+	border : 1px solid #ff8100 ;
+
+}
+
+.section.contentAPI .api-nav nav a{
+	color:#ff8100;
+}
+.section.contentAPI .api-nav nav a:hover{
+	background : #ff8100;
+	color:#fff;
+}
+.section.contentAPI .api-nav nav li.active a{color: #fff;}
+.section.contentAPI .api-nav nav li.active{background : #ff8100;
+	color:#fff;}
+.section.contentAPI .apiContents em{
+	display: block;
+	color : #39aecf;
+	margin: 5px 0px;
+}

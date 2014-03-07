@@ -60,6 +60,10 @@ $(document).ready(function() {
         // Display tab content
 	    $(this).tab('show');
 
+        //
+        $('#myTab a').removeClass('active');
+        $(this).addClass('active');
+
         // Instanciate copy to clipboard feature
         $('.clipboard').each(function(i){
             var that = $(this);
