@@ -19,8 +19,8 @@ Access : http://spitdata.com
     <td><a href="http://www.linkedin.com/profile/view?id=117435294"><img src="http://www.tlogistics.eu/wp-content/uploads/2013/01/Linkedin-Logo1.png" alt="LinkedIn"/></a></td>
   </tr>
   <tr>
-    <td><img src="https://fr.gravatar.com/userimage/58955705/05d7d60184e3f1dcebfc25f1c08c1794" alt="front-end dev"/></td>
-    <td><h4>BURGY Pierre</h4><h5>Front-end Developer</h5></td>
+    <td><img src="https://fr.gravatar.com/userimage/58955705/05d7d60184e3f1dcebfc25f1c08c1794" alt="back-dev"/></td>
+    <td><h4>BURGY Pierre</h4><h5>Back-end Developer</h5></td>
     <td><a href="http://www.linkedin.com/profile/view?id=261554790"><img src="http://www.tlogistics.eu/wp-content/uploads/2013/01/Linkedin-Logo1.png" alt="LinkedIn"/></a></td>
   </tr>
   <tr>
