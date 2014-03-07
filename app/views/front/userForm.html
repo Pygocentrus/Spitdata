@@ -1,14 +1,16 @@
+<form class="form-data" name="users" method="post" action="http://spitdata.com/generator/send">
 <section class="section liveurl">
+	
 	<div class="container">
 		<div class="row">
-		<form>
+		<div class="form-live">
 			<div class="col-md-12">
-				<input type="text" id="text-url" name="liveUrl" value="spitdata.com/[[typeData]]/[[typeContent]]/[[nbContent]]" readonly="readonly" class="liveUrl_1"/>
+				<input type="text" id="text-url" name="liveUrl" value="spitdata.com/[[typeData]]/[[gender]]/[[nbUsers]]" readonly="readonly" class="liveUrl_1"/>
 
 				<input type="button" id="btn-copy" name="btn-copy" class="clipboard" data-id="1" value="COPY URL TO CLIPBOARD"/>
-				<a href="#" class="info"><i class="fa fa-info-circle"></i></a>
+				<a href="#" class="info" rel="tooltip" data-original-title="Lorem ipsum dolor sit amet"><i class="fa fa-info-circle"></i></a>
 			</div>
-		</form>
+		</div>
 		</div>
 	</div>
 </section>
@@ -28,25 +30,25 @@
 
 
 			<div class="row">
-				<form class="form-data" name="users" method="post" action="http://localhost/Hetic/php/phpProject/admin/send">
+				<div class="form-data">
 
 
 					<p class="nb-users" >
 						<label for="nbUsers">Numbers of users</label>
-						<input type="text" id="nbUsers" name="nbUsers" ng-model="nbContent" ng-pattern="/^[\d]{1,3}$/">
+						<input type="text" id="nbUsers" name="nbUsers" ng-model="nbUsers" ng-pattern="/^[\d]{1,3}$/">
 					</p>
 
 					<div class="radio users">
 						<p>
-						   <input type="radio" id="male" name="gender" ng-model="typeContent" value="male" checked="checked">
+						   <input type="radio" id="male" name="gender" ng-model="gender" value="male" checked="checked">
 						   <label for="male">Male</label>
 						</p>
 						<p>
-						   <input type="radio" id="female" name="gender" ng-model="typeContent" value="female">
+						   <input type="radio" id="female" name="gender" ng-model="gender" value="female">
 						   <label for="female" class="label-female">Female</label>
 						</p>
 						<p>
-						   <input type="radio" id="both" name="gender" ng-model="typeContent" value="both">
+						   <input type="radio" id="both" name="gender" ng-model="gender" value="both">
 						   <label for="both">Both</label>
 						</p>
 					</div>
@@ -54,7 +56,16 @@
 					<div class="col-md-12 submit">
 						<input type="submit" value="Generate data" id="btn-submit">
 					</div>
-				</form>
+				
+			</div>
+
+			<div class="row after-form">
 			</div>
 		</div>
 	</section>
+</form>
+	<script>
+		$(function (){
+	       $('a').tooltip();
+	    });
+	</script>

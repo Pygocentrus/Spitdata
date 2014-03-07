@@ -42,7 +42,7 @@
 	    }
 
 	    public function getRowCounter(){
-	    	$tables = array('article', 'dates', 'fbPost', 'item', 'location', 'tweet', 'user');
+	    	$tables = array('article', 'dates', 'fbpost', 'item', 'location', 'tweet', 'user');
 	    	$rowNumbers = array();
 	    	foreach($tables as $table){
 	    		$this->mapper=$this->getMapper($table);

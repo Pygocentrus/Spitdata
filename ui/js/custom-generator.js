@@ -5,8 +5,8 @@ var myApp = angular.module('myApp', [], function($interpolateProvider) {
 
 //Users
 myApp.controller('UserCtrl', ['$scope', function ($scope) {
-    $scope.nbContent = 1;
-    $scope.typeContent = 'both';
+    $scope.nbUsers = 1;
+    $scope.gender = 'both';
     $scope.typeData = "user"
     $scope.view = {
 	    getView: function() {
@@ -97,7 +97,9 @@ $(document).ready(function() {
         });
     }, 1000);
 
-
+    $(function (){
+       $('a').tooltip();
+    });
     // Copy to clipboard
     // $('body').on('click', '.clipboard', function(e){
     //     $(this).clipboard({

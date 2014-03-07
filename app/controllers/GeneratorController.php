@@ -9,6 +9,7 @@
 			$allowedTypes = array('user', 'post', 'content');
 			$args         = explode('/', $asked);
 
+			
 			if(in_array($args[1], $allowedTypes)){
 				switch ($args[1]) {
 					case 'user':	// users

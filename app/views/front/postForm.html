@@ -1,14 +1,15 @@
+<form class="form-data" name="users" method="post" action="http://spitdata.com/generator/send">
 <section class="section liveurl">
-	<div class="container">
+	<div class="container">	
 		<div class="row">
-		<form>
+		<div class="form-live">
 			<div class="col-md-12">
 				<input type="text" id="text-url" name="liveUrl" value="spitdata.com/[[typeData]]/[[typeContent]]/[[nbContent]]" readonly="readonly" class="liveUrl_2"/>
-
+			
 				<input type="button" id="btn-copy" name="btn-copy" class="clipboard" data-id="2" value="COPY URL TO CLIPBOARD"/>
-				<a href="#" class="info"><i class="fa fa-info-circle"></i></a>
+				<a href="#" class="info" rel="tooltip" data-original-title="Lorem ipsum dolor sit amet"><i class="fa fa-info-circle"></i></a>
 			</div>
-		</form>
+		</div>
 		</div>
 	</div>
 </section>
@@ -25,36 +26,45 @@
 			</div>
 
 
-
-
+			
+			
 			<div class="row">
-				<form class="form-data" name="contents" method="post" action="http://localhost/Hetic/php/phpProject/admin/send">
-
-
+				<div class="form-data">
+				
 					<p class="nb-users" >
 						<label for="nbUsers">Numbers of posts</label>
 						<input type="text" id="nbUsers" name="nbUsers" ng-model="nbContent" ng-pattern="/^[\d]{1,3}$/">
 					</p>
-
+					
 					<div class="radio post">
-						<p>
-						   <input type="radio" id="tweet" name="type" ng-model="typeContent" value="tweet" checked>
-						   <label for="tweet">Tweets</label>
-						</p>
-						<p>
-						   <input type="radio" id="fbpost" name="type" ng-model="typeContent" value="fbpost">
-						   <label for="fbpost" class="label-facebook">Facebook posts</label>
-						</p>
-						<p>
-						   <input type="radio" id="article" name="type" ng-model="typeContent" value="article">
-						   <label for="article" class="label-articles">Articles</label>
-						</p>
+						<p>  
+						   <input type="radio" id="tweet" name="type" ng-model="typeContent" value="tweet" checked>  
+						   <label for="tweet">Tweets</label>  
+						</p>  
+						<p>  
+						   <input type="radio" id="fbpost" name="type" ng-model="typeContent" value="fbpost">  
+						   <label for="fbpost" class="label-facebook">Facebook posts</label>  
+						</p>  
+						<p>  
+						   <input type="radio" id="article" name="type" ng-model="typeContent" value="article">  
+						   <label for="article" class="label-articles">Articles</label>  
+						</p>   
 					</div>
-
+					
 					<div class="col-md-12 submit">
 						<input type="submit" value="Generate data" id="btn-submit">
-					</div>
-				</form>
+					</div>					
+				</div>
+			</div>
+
+			<div class="row after-form">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat. </p>
 			</div>
 		</div>
 	</section>
+
+	<script>
+		$(function (){
+	       $('a').tooltip();
+	    });
+	</script>

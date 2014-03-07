@@ -23,7 +23,7 @@
 			$file            = $_FILES['dataFile'];
 			$fileName        = $file ? $this->f3->get('UPLOADS').$this->f3->camelcase($file['name']) : null;
 			$rawTable        = $this->f3->get('PARAMS.contentType');
-			$allowedContents = array('article', 'dates', 'fbPost', 'item', 'location', 'tweet', 'user');
+			$allowedContents = array('article', 'dates', 'fbpost', 'item', 'location', 'tweet', 'user');
 			$table           = (isset($rawTable) && in_array($rawTable, $allowedContents)) ? htmlentities(trim($rawTable)) : null;
 			if(move_uploaded_file($file['tmp_name'], $fileName) && file_exists($fileName) && !is_null($table)){
 				$rawData = file_get_contents($fileName);

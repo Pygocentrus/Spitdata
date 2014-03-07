@@ -1,14 +1,15 @@
+<form class="form-data" name="users" method="post" action="http://spitdata.com/generator/send">
 <section class="section liveurl">
 	<div class="container">
 		<div class="row">
-		<form>
-			<div class="col-md-12">
-				<input type="text" id="text-url" name="liveUrl" value="spitdata.com/[[typeData]]/[[typeContent]]/[[nbContent]]" readonly="readonly" class="liveUrl_3"/>
+			<div class="form-live">
+				<div class="col-md-12">
+					<input type="text" id="text-url" name="liveUrl" value="spitdata.com/[[typeData]]/[[typeContent]]/[[nbContent]]" readonly="readonly" class="liveUrl_3"/>
 
-				<input type="button" id="btn-copy" name="btn-copy" class="clipboard" data-id="3" value="COPY URL TO CLIPBOARD"/>
-				<a href="#" class="info"><i class="fa fa-info-circle"></i></a>
+					<input type="button" id="btn-copy" name="btn-copy" class="clipboard" data-id="3" value="COPY URL TO CLIPBOARD"/>
+					<a href="#" class="info" rel="tooltip" data-original-title="Lorem ipsum dolor sit amet"><i class="fa fa-info-circle"></i></a>
+				</div>
 			</div>
-		</form>
 		</div>
 	</div>
 </section>
@@ -28,7 +29,7 @@
 
 
 			<div class="row">
-				<form class="form-data" name="contents" method="post" action="http://localhost/Hetic/php/phpProject/admin/send">
+				<div class="form-data">
 
 
 					<p class="nb-users" >
@@ -46,15 +47,22 @@
 						   <label for="dates">Dates</label>
 						</p>
 						<p>
-						   <input type="radio" id="locations" name="type" ng-model="typeContent" value="locations">
-						   <label for="locations" class="label-location">Locations</label>
+						   <input type="radio" id="location" name="type" ng-model="typeContent" value="location">
+						   <label for="location" class="label-location">Location</label>
 						</p>
 					</div>
 
 					<div class="col-md-12 submit">
 						<input type="submit" value="Generate data" id="btn-submit">
 					</div>
-				</form>
+				
 			</div>
+
 		</div>
 	</section>
+</form>
+	<script>
+		$(function (){
+	       $('a').tooltip();
+	    });
+	</script>

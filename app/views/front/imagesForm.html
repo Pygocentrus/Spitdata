@@ -1,14 +1,15 @@
+<form class="form-data" name="contents" method="post" action="http://spitdata.com/generator/send">
 <section class="section liveurl">
     <div class="container">
         <div class="row">
-        <form>
+        <div class="form-live">
             <div class="col-md-12">
                 <input type="text" id="text-url" name="liveUrl" value="spitdata.com/image/[[dirname]]/[[width]]/[[height]]/[[extension]]/[[nbrImages]]/[[zip]]" readonly="readonly" class="liveUrl_4"/>
 
                 <input type="button" id="btn-copy" name="btn-copy" class="clipboard" data-id="4" value="COPY URL TO CLIPBOARD"/>
-                <a href="#" class="info"><i class="fa fa-info-circle"></i></a>
+                <a href="#" class="info" rel="tooltip" data-original-title="Lorem ipsum dolor sit amet"><i class="fa fa-info-circle"></i></a>
             </div>
-        </form>
+        </div>
         </div>
     </div>
 </section>
@@ -28,7 +29,7 @@
 
 
             <div class="row">
-                <form class="form-data" name="contents" method="post" action="http://localhost/Hetic/php/phpProject/admin/send">
+                <div class="form-data" >
 
 
                     <p class="nb-users" >
@@ -41,7 +42,7 @@
 
                         <p>
                            <input type="radio" id="articles" name="theme" ng-model="dirname" value="articles" checked>
-                           <label for="items">Articles</label>
+                           <label for="articles">Articles</label>
                         </p>
                         <p>
                            <input type="radio" id="img-items" name="theme" ng-model="dirname" value="items">
@@ -96,9 +97,16 @@
                     </div>
 
                     <div class="col-md-12 submit">
-                        <input type="submit" value="Generate data" id="btn-submit">
+                        <input type="submit" value="Generate data" id="btn-submit" disabled>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </section>
+</form>
+
+    <script>
+        $(function (){
+           $('a').tooltip();
+        });
+    </script>
