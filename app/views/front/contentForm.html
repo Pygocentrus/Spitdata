@@ -1,10 +1,10 @@
 <section class="section liveurl">
-	<div class="container">	
+	<div class="container">
 		<div class="row">
 		<form>
 			<div class="col-md-12">
 				<input type="text" id="text-url" name="liveUrl" value="spitdata.com/[[typeData]]/[[typeContent]]/[[nbContent]]" readonly="readonly" class="liveUrl_3"/>
-			
+
 				<input type="button" id="btn-copy" name="btn-copy" class="clipboard" data-id="3" value="COPY URL TO CLIPBOARD"/>
 				<a href="#" class="info"><i class="fa fa-info-circle"></i></a>
 			</div>
@@ -25,35 +25,35 @@
 			</div>
 
 
-			
-			
+
+
 			<div class="row">
 				<form class="form-data" name="contents" method="post" action="http://localhost/Hetic/php/phpProject/admin/send">
-					
+
 
 					<p class="nb-users" >
 						<label for="nbUsers">Numbers of contents</label>
 						<input type="text" id="nbUsers" name="nbUsers" ng-model="nbContent" ng-pattern="/^[\d]{1,3}$/">
 					</p>
-					
+
 					<div class="radio content">
-						<p>  
-						   <input type="radio" id="items" name="type" ng-model="typeContent" value="items" checked>  
-						   <label for="items">Items</label>  
-						</p>  
-						<p>  
-						   <input type="radio" id="dates" name="type" ng-model="typeContent" value="dates">  
-						   <label for="dates">Dates</label>  
-						</p>  
-						<p>  
-						   <input type="radio" id="locations" name="type" ng-model="typeContent" value="locations">  
-						   <label for="locations" class="label-location">Locations</label>  
-						</p>   
+						<p>
+						   <input type="radio" id="items" name="type" ng-model="typeContent" value="item" checked>
+						   <label for="items">Items</label>
+						</p>
+						<p>
+						   <input type="radio" id="dates" name="type" ng-model="typeContent" value="dates">
+						   <label for="dates">Dates</label>
+						</p>
+						<p>
+						   <input type="radio" id="locations" name="type" ng-model="typeContent" value="locations">
+						   <label for="locations" class="label-location">Locations</label>
+						</p>
 					</div>
-					
+
 					<div class="col-md-12 submit">
 						<input type="submit" value="Generate data" id="btn-submit">
-					</div>					
+					</div>
 				</form>
 			</div>
 

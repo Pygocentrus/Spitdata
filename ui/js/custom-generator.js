@@ -27,7 +27,7 @@ myApp.controller('PostCtrl', ['$scope', function ($scope) {
 }]);
 //Contents
 myApp.controller('ContentCtrl', ['$scope', function ($scope) {
-    $scope.typeContent = 'items';
+    $scope.typeContent = 'item';
     $scope.nbContent = 1;
     $scope.typeData = "content"
     $scope.view = {
